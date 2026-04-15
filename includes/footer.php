@@ -63,6 +63,7 @@ $currentYear = date('Y');
       &copy; <?= $currentYear ?> Zambales Tourism &mdash; Province of Zambales, Philippines.
       All rights reserved.
     </p>
+    
     <p style="color:rgba(253,248,240,0.2); font-size:0.72rem;">
       Built with ♡ for Zambaleños and travellers alike.
     </p>
