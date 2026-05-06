@@ -35,7 +35,6 @@ body {
   background: var(--cream);
   color: var(--ink);
   overflow-x: hidden;
-  cursor: none;
 }
 
 img { display: block; max-width: 100%; }
@@ -187,7 +186,6 @@ ul { list-style: none; }
   letter-spacing: 0.06em;
   border-radius: 4px;
   transition: all 0.3s var(--ease-out-expo);
-  cursor: none;
 }
 .btn-primary {
   background: var(--coral); color: var(--cream);
@@ -313,7 +311,6 @@ section { padding: 7rem 4rem; }
 .dest-card {
   position: relative; overflow: hidden; border-radius: 6px;
   background: var(--ocean);
-  cursor: none;
 }
 .dest-card:first-child {
   grid-row: span 2;
@@ -607,7 +604,7 @@ footer {
   border-radius: 100px;
   font-size: 0.8rem; font-weight: 500;
   color: var(--stone); background: transparent;
-  cursor: none; transition: all 0.25s;
+  transition: all 0.25s;
   font-family: var(--ff-body);
 }
 .filter-btn:hover, .filter-btn.active { background: var(--ocean); color: var(--cream); border-color: var(--ocean); }
@@ -622,7 +619,6 @@ footer {
   background: white;
   box-shadow: 0 2px 20px rgba(28,24,20,0.06);
   transition: transform 0.35s var(--ease-out-expo), box-shadow 0.35s;
-  cursor: none;
 }
 .dest-full-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(28,24,20,0.12); }
 .dest-full-card .img-wrap { height: 240px; overflow: hidden; }
@@ -694,7 +690,6 @@ footer {
   font-family: var(--ff-body); font-size: 0.9rem;
   color: var(--ink); background: white;
   transition: border-color 0.3s, box-shadow 0.3s;
-  outline: none; cursor: none;
 }
 .form-group input:focus,
 .form-group select:focus,
@@ -712,7 +707,6 @@ footer {
   border: none; border-radius: 6px;
   font-family: var(--ff-body); font-size: 0.9rem; font-weight: 600;
   letter-spacing: 0.06em; text-transform: uppercase;
-  cursor: none;
   transition: background 0.3s, transform 0.2s;
 }
 .form-submit:hover { background: var(--coral); transform: translateY(-2px); }
@@ -763,7 +757,7 @@ footer {
 .mobile-close {
   position: absolute; top: 1.5rem; right: 2rem;
   font-size: 2rem; color: rgba(253,248,240,0.6);
-  cursor: none; transition: color 0.3s;
+  transition: color 0.3s;
 }
 .mobile-close:hover { color: var(--cream); }
 

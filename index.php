@@ -3,8 +3,6 @@ $pageTitle = 'Home';
 include __DIR__ . '/includes/header.php';
 ?>
 
-<link rel="stylesheet" href="assets/css/style.css">
-
 <!-- ╔══════════════════════════════════════════════════════════╗
      ║  HERO SECTION                                           ║
      ╚══════════════════════════════════════════════════════════╝ -->

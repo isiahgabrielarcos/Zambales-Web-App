@@ -1,0 +1,150 @@
+# 🌊 Zambales Tourism — Web Application
+
+A full-featured tourism website for the Province of Zambales, Philippines.
+Built with PHP, vanilla CSS, and JavaScript — no framework required.
+
+---
+
+## 📁 Project Structure
+
+```
+zambales-webapp/
+├── assets/
+│   ├── css/style.css        → All styles (CSS variables, layout, animations)
+│   ├── js/main.js           → Custom cursor, scroll effects, filter, form
+│   └── images/              → Local images, icons, favicon
+├── config/
+│   └── db.php               → PDO database connection (⚠️ gitignored)
+├── includes/
+│   ├── header.php           → <head>, nav bar, cursor elements
+│   └── footer.php           → Footer links, socials, JS script tag
+├── pages/
+│   ├── destinations.php     → Full destinations listing with category filter
+│   └── contact.php          → Trip inquiry form (with PHP validation)
+├── uploads/                 → User-uploaded images (ensure chmod 755)
+├── index.php                → Homepage
+├── .gitignore
+└── README.md
+```
+
+---
+
+## 🚀 Getting Started
+
+### Requirements
+- PHP 8.0+
+- MySQL / MariaDB (optional — contact form works without DB by default)
+- A local server: [XAMPP](https://www.apachefriends.org/), [Laragon](https://laragon.org/), or `php -S localhost:8000`
+
+### Quick Start
+
+```bash
+# Clone / copy the project into your server's web root
+cd /Applications/XAMPP/htdocs
+# or: cd /var/www/html
+
+git clone <your-repo-url> zambales-webapp
+cd zambales-webapp
+
+# Copy and fill in the database config
+cp config/db.php.example config/db.php
+# Edit config/db.php with your credentials
+
+# Start your local server
+php -S localhost:8000
+
+####################If you want to open a server from anywhere. C:\xampp\php\php.exe -S localhost:8000
+```
+
+Then open `http://localhost:8000/zambales-webapp/` in your browser.
+http://localhost:8080/
+
+---
+
+## 🗄 Database (Optional)
+
+The contact form works out of the box without a database.
+To persist inquiries, create a MySQL database and run:
+
+```sql
+CREATE DATABASE IF NOT EXISTS zambales_tourism
+  CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+USE zambales_tourism;
+
+CREATE TABLE inquiries (
+  id              INT AUTO_INCREMENT PRIMARY KEY,
+  name            VARCHAR(150)  NOT NULL,
+  email           VARCHAR(255)  NOT NULL,
+  phone           VARCHAR(30)   DEFAULT NULL,
+  trip_type       VARCHAR(60)   DEFAULT NULL,
+  guests          TINYINT       DEFAULT 1,
+  preferred_dates VARCHAR(120)  DEFAULT NULL,
+  message         TEXT          NOT NULL,
+  created_at      DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+```
+
+Then uncomment the PDO block in `pages/contact.php`.
+
+---
+
+## ✨ Features
+
+| Feature | Details |
+|---|---|
+| **Custom Cursor** | Coral dot + lagging ring, hover state expansion |
+| **Parallax Hero** | Smooth scroll-based depth effect on hero image |
+| **Scroll Reveal** | IntersectionObserver — staggered fade-up on scroll |
+| **Destination Filter** | Client-side category filtering with CSS transitions |
+| **Drag-to-scroll Gallery** | Mouse drag scroll for the horizontal photo strip |
+| **Animated Counters** | Eased number count-up when stats enter viewport |
+| **Contact Form** | PHP server-side validation + success state |
+| **Mobile Navigation** | Full-screen overlay nav for small screens |
+| **Responsive Layout** | Mobile-first breakpoints at 768px and 1100px |
+
+---
+
+## 🎨 Design System
+
+```css
+--ocean:  #0b3d57   /* Deep ocean — primary brand color */
+--sea:    #1a6b8a   /* Mid-tone blue */
+--sky:    #4fb3d9   /* Light sky accent */
+--sand:   #e8c98a   /* Warm gold highlights */
+--coral:  #e06b3f   /* Energetic CTA / accent */
+--cream:  #fdf8f0   /* Warm off-white background */
+--ink:    #1c1814   /* Rich dark text / footer */
+
+Font Display: Cormorant Garamond (editorial serif)
+Font Body:    Outfit (clean geometric sans)
+```
+
+---
+
+## 📸 Images
+
+Currently using [Unsplash](https://unsplash.com) placeholder images for development.
+Replace with actual Zambales photography in `assets/images/` and update `src` attributes.
+
+Recommended resolutions:
+- Hero: 1800 × 1000 px
+- Destination cards: 700 × 500 px
+- Gallery strip: 600 × 800 px
+
+---
+
+## 👥 Group Members
+
+| Name | Role |
+|---|---|
+| — | Frontend / CSS |
+| — | PHP / Backend |
+| — | Content / Research |
+| — | Design / Assets |
+
+---
+
+## 📝 License
+
+For academic and non-commercial use. Photo credits belong to their respective photographers on Unsplash.
