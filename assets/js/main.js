@@ -4,47 +4,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ── CUSTOM CURSOR ───────────────────────────────────────── */
-  const cursor     = document.querySelector('.cursor');
-  const cursorRing = document.querySelector('.cursor-ring');
-
-  if (cursor && cursorRing) {
-    let mouseX = 0, mouseY = 0;
-    let ringX  = 0, ringY  = 0;
-
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      cursor.style.left = mouseX + 'px';
-      cursor.style.top  = mouseY + 'px';
-    });
-
-    // Lag the ring
-    (function animateRing() {
-      ringX += (mouseX - ringX) * 0.12;
-      ringY += (mouseY - ringY) * 0.12;
-      cursorRing.style.left = ringX + 'px';
-      cursorRing.style.top  = ringY + 'px';
-      requestAnimationFrame(animateRing);
-    })();
-
-    // Cursor states
-    document.querySelectorAll('a, button, .dest-card, .exp-card, .dest-full-card').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.style.width  = '20px';
-        cursor.style.height = '20px';
-        cursorRing.style.width  = '56px';
-        cursorRing.style.height = '56px';
-      });
-      el.addEventListener('mouseleave', () => {
-        cursor.style.width  = '12px';
-        cursor.style.height = '12px';
-        cursorRing.style.width  = '36px';
-        cursorRing.style.height = '36px';
-      });
-    });
-  }
-
   /* ── NAV SCROLL STATE ────────────────────────────────────── */
   const nav = document.querySelector('.nav');
   if (nav) {

@@ -37,10 +37,6 @@ $rootPath  = $isSubPage ? '../' : '';
 </head>
 <body>
 
-<!-- ── CUSTOM CURSOR ───────────────────────────────────── -->
-<div class="cursor"></div>
-<div class="cursor-ring"></div>
-
 <!-- ── MOBILE MENU ────────────────────────────────────── -->
 <div class="mobile-menu" id="mobile-menu">
   <span class="mobile-close" id="mobile-close" aria-label="Close menu">✕</span>
