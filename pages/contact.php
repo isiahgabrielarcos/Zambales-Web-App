@@ -194,7 +194,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <div>
     <p style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--sand);margin-bottom:0.5rem">Finding Us</p>
     <p style="font-family:var(--ff-display);font-size:1.5rem;color:var(--cream);font-weight:300">
-      Zambales is <em>3–4 hours</em> from Manila via NLEX/SCTEX
+      Zambales is <em>3–4 hours.</em> from Manila via NLEX/SCTEX
     </p>
   </div>
   <a href="https://maps.google.com/?q=Iba,Zambales,Philippines" target="_blank" rel="noopener noreferrer"
