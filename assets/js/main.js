@@ -5,16 +5,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ── NAV SCROLL STATE ────────────────────────────────────── */
-  const nav = document.querySelector('.nav');
-  if (nav) {
-    const updateNav = () => {
-      nav.classList.toggle('scrolled', window.scrollY > 60);
-    };
-    window.addEventListener('scroll', updateNav, { passive: true });
-    updateNav();
-  }
-
   /* ── HERO BG ZOOM ────────────────────────────────────────── */
   const heroBg = document.querySelector('.hero-bg');
   if (heroBg) {
@@ -22,19 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     img.onload = () => heroBg.classList.add('loaded');
     img.src = heroBg.style.backgroundImage?.match(/url\(['"]?(.+?)['"]?\)/)?.[1] || '';
     setTimeout(() => heroBg.classList.add('loaded'), 100);
-  }
-
-  /* ── MOBILE MENU ─────────────────────────────────────────── */
-  const hamburger  = document.querySelector('.nav-hamburger');
-  const mobileMenu = document.querySelector('.mobile-menu');
-  const mobileClose = document.querySelector('.mobile-close');
-
-  if (hamburger && mobileMenu) {
-    hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
-    mobileClose?.addEventListener('click', () => mobileMenu.classList.remove('open'));
-    mobileMenu.querySelectorAll('a').forEach(a =>
-      a.addEventListener('click', () => mobileMenu.classList.remove('open'))
-    );
   }
 
   /* ── SCROLL REVEAL ───────────────────────────────────────── */
@@ -52,13 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-  /* ── ACTIVE NAV LINK ─────────────────────────────────────── */
-  const currentPath = window.location.pathname;
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    if (a.getAttribute('href') === currentPath ||
-        (currentPath.includes(a.getAttribute('href')) && a.getAttribute('href') !== '/')) {
-      a.classList.add('active');
-    }
+  /* ── FAQ ACCORDION ──────────────────────────────────────── */
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
   });
 
   /* ── FOOTER YEAR ─────────────────────────────────────────── */
