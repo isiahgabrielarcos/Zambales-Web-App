@@ -1,11 +1,23 @@
 <?php
-$pageTitle = 'Destinations';
-include __DIR__ . '/../includes/header.php';
-
 /**
- * pages/destinations.php
- * Lists all Zambales tourist destinations with category filter
+ * api/destinations.php
+ * GET endpoint — returns all Zambales tourist destinations as JSON.
+ *
+ * Usage:   GET /api/destinations.php
+ * Returns: { "success": true, "data": [ {name, location, category, ...}, ... ] }
+ *
+ * Later this array can be replaced with a database query, e.g.:
+ *   require_once __DIR__ . '/config/db.php';
+ *   $destinations = $pdo->query('SELECT * FROM destinations')->fetchAll();
  */
+
+header('Content-Type: application/json; charset=utf-8');
+
+if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+    http_response_code(405);
+    echo json_encode(['success' => false, 'error' => 'Method not allowed. Use GET.']);
+    exit;
+}
 
 $destinations = [
   [
@@ -99,68 +111,8 @@ $destinations = [
     'alt'      => 'Mango orchard in Zambales Philippines',
   ],
 ];
-?>
 
-<!-- ╔══════════════════════════════════════════════════════════╗
-     ║  PAGE HERO                                              ║
-     ╚══════════════════════════════════════════════════════════╝ -->
-<div class="page-hero" role="banner" aria-label="Destinations page hero">
-  <div class="page-hero-content">
-    <p class="section-label">Discover Zambales</p>
-    <h1>All <em style="font-family:var(--ff-display);font-style:italic;color:var(--sand)">Destinations</em></h1>
-  </div>
-</div>
-
-
-<!-- ╔══════════════════════════════════════════════════════════╗
-     ║  FILTER BAR                                             ║
-     ╚══════════════════════════════════════════════════════════╝ -->
-<div class="filter-bar" role="navigation" aria-label="Category filter">
-  <button class="filter-btn active" data-filter="all">All</button>
-  <button class="filter-btn" data-filter="beach">🏖 Beaches & Coves</button>
-  <button class="filter-btn" data-filter="adventure">⛰ Adventure</button>
-  <button class="filter-btn" data-filter="culture">🎋 Culture & Heritage</button>
-</div>
-
-
-<!-- ╔══════════════════════════════════════════════════════════╗
-     ║  DESTINATIONS GRID                                      ║
-     ╚══════════════════════════════════════════════════════════╝ -->
-<main class="destinations-grid" aria-label="List of destinations">
-  <?php foreach ($destinations as $i => $d): ?>
-  <article class="dest-full-card reveal reveal-delay-<?= $i % 3 ?>"
-           data-category="<?= htmlspecialchars($d['category']) ?>">
-    <div class="img-wrap">
-      <img src="<?= htmlspecialchars($d['img']) ?>"
-           alt="<?= htmlspecialchars($d['alt']) ?>"
-           loading="lazy" />
-    </div>
-    <div class="dest-full-info">
-      <p class="dest-tag"><?= $d['tag'] ?> &bull; <?= htmlspecialchars($d['location']) ?></p>
-      <h3><?= htmlspecialchars($d['name']) ?></h3>
-      <p><?= htmlspecialchars($d['desc']) ?></p>
-      <div class="dest-chips">
-        <?php foreach ($d['chips'] as $chip): ?>
-        <span class="chip"><?= htmlspecialchars($chip) ?></span>
-        <?php endforeach; ?>
-      </div>
-    </div>
-  </article>
-  <?php endforeach; ?>
-</main>
-
-
-<!-- ╔══════════════════════════════════════════════════════════╗
-     ║  CTA BANNER                                             ║
-     ╚══════════════════════════════════════════════════════════╝ -->
-<section class="cta-section" aria-label="Plan your trip">
-  <p class="section-label" style="color:rgba(253,248,240,0.7)">Ready?</p>
-  <h2 class="section-title" style="font-size:clamp(2rem,4vw,3.5rem)">Let's Plan Your <em>Itinerary</em></h2>
-  <p>Tell us where you want to go and we'll take care of the rest.</p>
-  <div class="hero-actions" style="justify-content:center;margin-top:0.5rem">
-    <a href="contact.php" class="btn btn-primary">Get In Touch</a>
-  </div>
-</section>
-
-
-<?php include __DIR__ . '/../includes/footer.php'; ?>
+echo json_encode(
+    ['success' => true, 'data' => $destinations],
+    JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+);

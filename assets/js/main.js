@@ -1,5 +1,6 @@
 /* ============================================================
    ZAMBALES TOURISM — main.js
+   Frontend behaviour + calls to the PHP backend in /api
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -37,19 +38,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ── SCROLL REVEAL ───────────────────────────────────────── */
-  const observer = new IntersectionObserver(
+  const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+          revealObserver.unobserve(entry.target);
         }
       });
     },
     { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
   );
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
   /* ── ACTIVE NAV LINK ─────────────────────────────────────── */
   const currentPath = window.location.pathname;
@@ -60,9 +61,59 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  /* ── FOOTER YEAR ─────────────────────────────────────────── */
+  document.querySelectorAll('[data-year]').forEach(el => {
+    el.textContent = new Date().getFullYear();
+  });
+
+  /* ── DESTINATIONS (fetched from api/destinations.php) ────── */
+  const destGrid = document.getElementById('destinations-grid');
+
+  const esc = (s) => String(s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+
+  const renderDestinations = (items) => {
+    destGrid.innerHTML = items.map((d, i) => `
+      <article class="dest-full-card reveal reveal-delay-${i % 3}"
+               data-category="${esc(d.category)}">
+        <div class="img-wrap">
+          <img src="${esc(d.img)}" alt="${esc(d.alt)}" loading="lazy" />
+        </div>
+        <div class="dest-full-info">
+          <p class="dest-tag">${esc(d.tag)} &bull; ${esc(d.location)}</p>
+          <h3>${esc(d.name)}</h3>
+          <p>${esc(d.desc)}</p>
+          <div class="dest-chips">
+            ${d.chips.map(chip => `<span class="chip">${esc(chip)}</span>`).join('')}
+          </div>
+        </div>
+      </article>
+    `).join('');
+
+    destGrid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  };
+
+  if (destGrid && destGrid.dataset.src) {
+    fetch(destGrid.dataset.src)
+      .then(res => res.json())
+      .then(json => {
+        renderDestinations(json.data || []);
+
+        // Apply ?filter=beach|adventure|culture from the URL (footer links)
+        const wanted = new URLSearchParams(window.location.search).get('filter');
+        const btn = wanted && document.querySelector(`.filter-btn[data-filter="${wanted}"]`);
+        if (btn) btn.click();
+      })
+      .catch(() => {
+        destGrid.innerHTML =
+          '<p style="grid-column:1/-1;text-align:center;padding:3rem 1rem">' +
+          'Could not load destinations. Make sure the PHP server is running and try again.</p>';
+      });
+  }
+
   /* ── DESTINATION FILTER ──────────────────────────────────── */
   const filterBtns = document.querySelectorAll('.filter-btn');
-  const destCards  = document.querySelectorAll('.dest-full-card');
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -70,7 +121,8 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.classList.add('active');
 
       const filter = btn.dataset.filter;
-      destCards.forEach(card => {
+      // Query at click time — cards are rendered after the API responds
+      document.querySelectorAll('.dest-full-card').forEach(card => {
         const cat = card.dataset.category;
         if (filter === 'all' || cat === filter) {
           card.style.display = '';
@@ -83,26 +135,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── CONTACT FORM ────────────────────────────────────────── */
+  /* ── CONTACT FORM (posts to api/contact.php) ─────────────── */
   const form = document.getElementById('contact-form');
   if (form) {
-    form.addEventListener('submit', (e) => {
+    const errorBox   = document.getElementById('form-errors');
+    const errorList  = document.getElementById('form-errors-list');
+    const formWrap   = document.getElementById('form-wrap');
+    const successBox = document.getElementById('form-success');
+
+    const showErrors = (errors) => {
+      errorList.innerHTML = '';
+      errors.forEach(msg => {
+        const li = document.createElement('li');
+        li.textContent = msg;
+        errorList.appendChild(li);
+      });
+      errorBox.hidden = false;
+      errorBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    };
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = form.querySelector('.form-submit');
       const original = btn.textContent;
       btn.textContent = 'Sending…';
       btn.disabled = true;
+      errorBox.hidden = true;
 
-      setTimeout(() => {
-        btn.textContent = '✓ Message Sent!';
-        btn.style.background = '#2a7d52';
-        form.reset();
-        setTimeout(() => {
-          btn.textContent = original;
-          btn.style.background = '';
-          btn.disabled = false;
-        }, 3500);
-      }, 1600);
+      try {
+        const res  = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+        const data = await res.json();
+
+        if (data.success) {
+          document.getElementById('form-success-name').textContent = data.name || 'friend';
+          formWrap.hidden = true;
+          successBox.hidden = false;
+          successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          showErrors(data.errors || ['Something went wrong. Please try again.']);
+        }
+      } catch {
+        showErrors(['Could not reach the server. Make sure the PHP server is running.']);
+      } finally {
+        btn.textContent = original;
+        btn.disabled = false;
+      }
     });
   }
 

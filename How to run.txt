@@ -1,7 +1,7 @@
 # 🌊 Zambales Tourism — Web Application
 
 A full-featured tourism website for the Province of Zambales, Philippines.
-Built with PHP, vanilla CSS, and JavaScript — no framework required.
+Frontend: pure HTML, CSS, and JavaScript. Backend: PHP API — no framework required.
 
 ---
 
@@ -9,23 +9,36 @@ Built with PHP, vanilla CSS, and JavaScript — no framework required.
 
 ```
 zambales-webapp/
+├── index.html               → Homepage (pure HTML)
+├── pages/                   → All other HTML pages (no PHP inside!)
+│   ├── destinations.html    → Destinations listing (cards loaded from the API)
+│   └── contact.html         → Trip inquiry form (submits to the API)
+├── api/                     → All PHP backend code lives here
+│   ├── destinations.php     → GET  → returns destinations as JSON
+│   ├── contact.php          → POST → validates the inquiry form, returns JSON
+│   └── config/
+│       ├── db.php           → PDO database connection (⚠️ gitignored)
+│       └── db.php.example   → Template — copy to db.php and fill in
 ├── assets/
 │   ├── css/style.css        → All styles (CSS variables, layout, animations)
-│   ├── js/main.js           → Custom cursor, scroll effects, filter, form
+│   ├── js/main.js           → Scroll effects, filter, API fetch, form submit
 │   └── images/              → Local images, icons, favicon
-├── config/
-│   └── db.php               → PDO database connection (⚠️ gitignored)
-├── includes/
-│   ├── header.php           → <head>, nav bar, cursor elements
-│   └── footer.php           → Footer links, socials, JS script tag
-├── pages/
-│   ├── destinations.php     → Full destinations listing with category filter
-│   └── contact.php          → Trip inquiry form (with PHP validation)
 ├── uploads/                 → User-uploaded images (ensure chmod 755)
-├── index.php                → Homepage
 ├── .gitignore
-└── README.md
+└── How to run.txt
 ```
+
+How the pieces talk to each other:
+
+```
+HTML pages (frontend)  ──fetch()──►  api/*.php (backend)  ──PDO──►  MySQL (optional)
+        ▲                                  │
+        └────────── JSON responses ────────┘
+```
+
+- `pages/destinations.html` fetches `api/destinations.php` and renders the cards with JS.
+- `pages/contact.html` submits the form with JS to `api/contact.php` and shows
+  the success / error state from the JSON response — no page reload.
 
 ---
 
@@ -46,18 +59,22 @@ cd /Applications/XAMPP/htdocs
 git clone <your-repo-url> zambales-webapp
 cd zambales-webapp
 
+# (Optional, only needed for the database)
 # Copy and fill in the database config
-cp config/db.php.example config/db.php
-# Edit config/db.php with your credentials
+cp api/config/db.php.example api/config/db.php
+# Edit api/config/db.php with your credentials
 
-# Start your local server
+# Start your local server FROM THE PROJECT FOLDER
 php -S localhost:8000
 
-####################If you want to open a server from anywhere. C:\xampp\php\php.exe -S localhost:8000
+####################If you want to open a server from anywhere.
+C:\xampp\php\php.exe -S localhost:8000
 ```
 
-Then open `http://localhost:8000/zambales-webapp/` in your browser.
-http://localhost:8000/
+Then open `http://localhost:8000/` in your browser.
+
+⚠️ Note: the pages load data from the PHP API, so always open the site through
+the server (http://localhost:8000), not by double-clicking the HTML files.
 
 ---
 
@@ -85,7 +102,27 @@ CREATE TABLE inquiries (
 ) ENGINE=InnoDB;
 ```
 
-Then uncomment the PDO block in `pages/contact.php`.
+Then uncomment the PDO block in `api/contact.php`.
+
+---
+
+## 🔌 API Endpoints
+
+| Method | Endpoint                | Description                              |
+|--------|-------------------------|------------------------------------------|
+| GET    | `/api/destinations.php` | All destinations as JSON                  |
+| POST   | `/api/contact.php`      | Submit trip inquiry (form data) → JSON    |
+
+Example responses:
+
+```json
+GET /api/destinations.php
+{ "success": true, "data": [ { "name": "Anawangin Cove", "category": "beach", ... } ] }
+
+POST /api/contact.php
+{ "success": true, "name": "Juan dela Cruz" }
+{ "success": false, "errors": ["A valid email address is required."] }
+```
 
 ---
 
@@ -93,13 +130,13 @@ Then uncomment the PDO block in `pages/contact.php`.
 
 | Feature | Details |
 |---|---|
-| **Custom Cursor** | Coral dot + lagging ring, hover state expansion |
+| **Frontend / Backend Split** | Pure HTML pages + JSON API in `/api` (PHP) |
 | **Parallax Hero** | Smooth scroll-based depth effect on hero image |
 | **Scroll Reveal** | IntersectionObserver — staggered fade-up on scroll |
 | **Destination Filter** | Client-side category filtering with CSS transitions |
 | **Drag-to-scroll Gallery** | Mouse drag scroll for the horizontal photo strip |
 | **Animated Counters** | Eased number count-up when stats enter viewport |
-| **Contact Form** | PHP server-side validation + success state |
+| **Contact Form** | JS fetch → PHP API validation → success state, no reload |
 | **Mobile Navigation** | Full-screen overlay nav for small screens |
 | **Responsive Layout** | Mobile-first breakpoints at 768px and 1100px |
 
@@ -125,7 +162,8 @@ Font Body:    Outfit (clean geometric sans)
 ## 📸 Images
 
 Currently using [Unsplash](https://unsplash.com) placeholder images for development.
-Replace with actual Zambales photography in `assets/images/` and update `src` attributes.
+Replace with actual Zambales photography in `assets/images/` and update `src` attributes
+(destination card images are set in `api/destinations.php`).
 
 Recommended resolutions:
 - Hero: 1800 × 1000 px
