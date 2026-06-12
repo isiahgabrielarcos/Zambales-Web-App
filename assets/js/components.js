@@ -54,7 +54,7 @@
           <a href="${R}pages/accommodations.html" class="nav-dropdown-item" role="menuitem"><strong>Accommodations</strong><small>Hotels, resorts &amp; inns</small></a>
         </div>
       </li>
-      <li><a href="${R}pages/faqs.html">FAQs</a></li>
+      <li><a href="${R}pages/about.html">ABOUT US</a></li>
       <li><a href="${R}pages/contact.html">CONTACT</a></li>
     </ul>
     <a href="${R}pages/signin.html" class="nav-signin" id="open-signin">SIGN IN</a>
@@ -67,7 +67,7 @@
   <button class="mobile-close" id="mobile-close" aria-label="Close menu">✕</button>
   <a href="${R}index.html">Home</a>
   <a href="${R}pages/explore.html">Explore</a>
-  <a href="${R}pages/faqs.html">FAQs</a>
+  <a href="${R}pages/about.html">About Us</a>
   <a href="${R}pages/contact.html">Contact</a>
   <button class="mobile-menu-signin" id="mobile-signin">Sign In</button>
 </div>`;
@@ -93,35 +93,36 @@
         <a href="${R}index.html#destinations">Spotlight</a>
         <a href="${R}pages/explore.html">Explore</a>
         <a href="${R}pages/contact.html">Contact</a>
-        <a href="${R}pages/faqs.html">FAQs</a>
+        <a href="${R}pages/about.html">About Us</a>
       </div>
       <div class="footer-link-col">
         <h4>Experience</h4>
-        <a href="${R}pages/explore.html?filter=beach">Water Activities</a>
-        <a href="${R}pages/explore.html?filter=adventure">Land Activities</a>
-        <a href="${R}index.html#experiences">Food Trips</a>
-        <a href="${R}pages/explore.html?filter=culture">Culture</a>
+        <a href="${R}pages/aquascapes.html">Water Activities</a>
+        <a href="${R}pages/landscapes.html">Land Activities</a>
+        <a href="${R}pages/food.html">Food Trips</a>
+        <a href="${R}pages/culture.html">Culture</a>
+        <a href="${R}pages/accommodations.html">Accommodations</a>
       </div>
       <div class="footer-link-col">
         <h4>Resources</h4>
-        <a href="${R}index.html#tips">Travel Guide</a>
-        <a href="#">Emergency Contacts</a>
-        <a href="#">Commute Schedules</a>
+        <a href="${R}pages/tips.html">Travel Guide</a>
+        <a href="${R}pages/contact.html">Emergency Contacts</a>
+        <a href="${R}pages/tips.html">Commute Schedules</a>
       </div>
     </div>
     <div class="footer-links-right">
       <div class="footer-link-col">
-        <h4>Support</h4>
-        <a href="#">Forum Support</a>
-        <a href="#">Help Center</a>
-        <a href="#">Security</a>
+        <h4>About</h4>
+        <a href="${R}pages/about.html">About Us</a>
+        <a href="${R}pages/about.html">Our Focus</a>
+        <a href="${R}pages/about.html">Social Impact</a>
       </div>
       <div class="footer-link-col">
-        <h4>About</h4>
-        <a href="${R}index.html#about">About Us</a>
-        <a href="#">Our Focus</a>
-        <a href="#">Social Impact</a>
-        <a href="#">Governments</a>
+        <h4>Support</h4>
+        <a href="${R}pages/contact.html">Forum Support</a>
+        <a href="${R}pages/contact.html">Help Center</a>
+        <a href="${R}pages/contact.html">Security</a>
+        <a href="${R}pages/contact.html">Governments</a>
       </div>
     </div>
   </div>
