@@ -140,7 +140,7 @@
   </div>
 
   <div class="footer-note-row">
-    <p class="footer-gov-note">This is not an official Philippine Government Website</p>
+    <p class="footer-gov-note">This is not an official Philippine Government Website.</p>
     <p class="footer-tagline">A Symphony of Sea, Sand, and Mountain Peaks</p>
   </div>
 
