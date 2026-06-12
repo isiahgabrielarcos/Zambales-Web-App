@@ -31,7 +31,7 @@
     return `
 <nav class="nav" id="main-nav" role="navigation" aria-label="Main navigation">
   <div class="nav-left">
-    <a href="${R}index.html" class="nav-logo" aria-label="Zambales Tourism Home">LARGA!</a>
+    <a href="${R}index.html" class="nav-logo" aria-label="Zambales Tourism Home">ZambaLesGo!</a>
     <div class="nav-search">
       ${SEARCH_ICON}
       <input type="search" placeholder="Search destinations…" aria-label="Search destinations" />
@@ -165,7 +165,7 @@
 
     <!-- Step 1: choose auth method -->
     <div id="signin-step-1" class="signin-step">
-      <div class="signin-logo-mark">LARGA!</div>
+      <div class="signin-logo-mark">ZambaLesGo!</div>
       <h2 class="signin-heading">WELCOME BACK!</h2>
       <p class="signin-sub">Sign in to book and explore the wonderful Zambales.</p>
 
