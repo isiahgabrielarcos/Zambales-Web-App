@@ -1395,6 +1395,124 @@ section.section {
 .news-layout  { padding-left: var(--pad-x); padding-right: var(--pad-x); }
 .page-hero    { padding-left: var(--pad-x); padding-right: var(--pad-x); }
 
+/* ── ABOUT PAGE ───────────────────────────────────────────── */
+.about-split {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+  align-items: center; max-width: 1100px; margin: 3rem auto 0;
+}
+.about-split-img { border-radius: 12px; overflow: hidden; height: 420px; }
+.about-split-img img { width: 100%; height: 100%; object-fit: cover; }
+.about-split-text h3 {
+  font-family: var(--ff-display); font-size: 1.7rem; color: var(--ocean);
+  font-weight: 300; margin-bottom: 1.2rem;
+}
+.about-split-text p { color: var(--stone); line-height: 1.85; font-size: 0.93rem; margin-bottom: 0.9rem; }
+
+.about-stats-row {
+  display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
+  margin-top: 3.5rem; max-width: 900px; margin-left: auto; margin-right: auto;
+}
+.about-stat {
+  text-align: center; background: var(--cream); border-radius: 10px;
+  padding: 1.5rem 2rem; min-width: 130px; flex: 1;
+}
+.about-stat-num {
+  font-family: var(--ff-body); font-size: 2rem; font-weight: 900;
+  color: var(--ocean); line-height: 1;
+}
+.about-stat-label { font-size: 0.78rem; color: var(--stone); margin-top: 0.35rem; font-weight: 500; }
+
+.about-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1000px; margin: 0 auto; }
+.about-pillar {
+  background: var(--cream); border-radius: 12px; padding: 2rem 1.8rem;
+  border: 1px solid rgba(200,191,176,0.4);
+}
+.pillar-icon { font-size: 2rem; margin-bottom: 1rem; }
+.about-pillar h4 {
+  font-family: var(--ff-body); font-weight: 700; font-size: 1rem;
+  color: var(--ink); margin-bottom: 0.7rem;
+}
+.about-pillar p { color: var(--stone); font-size: 0.88rem; line-height: 1.8; }
+
+/* ── CONTACT PAGE — OFFICIALS & EMERGENCY ─────────────────── */
+.contacts-group { max-width: 1100px; margin: 0 auto 3rem; }
+.contacts-group-title {
+  font-family: var(--ff-body); font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--ocean);
+  margin-bottom: 1.2rem; padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--ocean);
+}
+
+.officials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.official-card {
+  display: flex; gap: 1rem; align-items: flex-start;
+  background: #fff; border-radius: 10px; padding: 1.3rem 1.4rem;
+  box-shadow: 0 2px 12px rgba(28,24,20,0.07);
+}
+.official-avatar {
+  width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em;
+}
+.official-name { font-weight: 700; font-size: 0.9rem; color: var(--ink); margin-bottom: 0.15rem; }
+.official-role { font-size: 0.78rem; color: var(--ocean); font-weight: 600; margin-bottom: 0.5rem; }
+.official-contact { font-size: 0.8rem; color: var(--stone); line-height: 1.7; }
+
+.lgu-table-wrap { overflow-x: auto; border-radius: 10px; box-shadow: 0 2px 12px rgba(28,24,20,0.07); }
+.lgu-table { width: 100%; border-collapse: collapse; background: #fff; font-size: 0.87rem; }
+.lgu-table thead tr { background: var(--ocean); color: #fff; }
+.lgu-table th { padding: 0.9rem 1.2rem; text-align: left; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.04em; }
+.lgu-table td { padding: 0.85rem 1.2rem; color: var(--ink); border-bottom: 1px solid rgba(200,191,176,0.3); }
+.lgu-table tbody tr:last-child td { border-bottom: none; }
+.lgu-table tbody tr:hover td { background: var(--cream); }
+
+.emergency-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+.emergency-card {
+  display: flex; gap: 1rem; align-items: flex-start;
+  background: #fff; border-radius: 10px; padding: 1.2rem 1.3rem;
+  box-shadow: 0 2px 12px rgba(28,24,20,0.07);
+  border-left: 4px solid var(--pebble);
+}
+.emergency-card.police { border-left-color: #2563eb; }
+.emergency-card.fire   { border-left-color: #dc2626; }
+.emergency-card.coast  { border-left-color: #0b3d57; }
+.emg-icon { font-size: 1.6rem; flex-shrink: 0; }
+.emg-name { font-weight: 700; font-size: 0.88rem; color: var(--ink); margin-bottom: 0.2rem; }
+.emg-detail { font-size: 0.78rem; color: var(--stone); margin-bottom: 0.4rem; line-height: 1.5; }
+.emg-tel { font-size: 0.82rem; color: var(--ocean); font-weight: 600; }
+.emg-tel a { color: inherit; text-decoration: none; }
+.emg-tel a:hover { text-decoration: underline; }
+
+/* ── CONTACT PAGE — DEVELOPER TEAM ────────────────────────── */
+.dev-team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.8rem; max-width: 1200px; margin: 0 auto; }
+.dev-card {
+  background: #fff; border-radius: 14px; padding: 2rem 1.6rem;
+  box-shadow: 0 4px 20px rgba(28,24,20,0.08);
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s;
+}
+.dev-card:hover { transform: translateY(-6px); box-shadow: 0 12px 36px rgba(28,24,20,0.13); }
+.dev-avatar {
+  width: 72px; height: 72px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 1.2rem; font-weight: 700;
+  margin-bottom: 1.1rem;
+}
+.dev-name { font-weight: 700; font-size: 0.95rem; color: var(--ink); margin-bottom: 0.25rem; line-height: 1.3; }
+.dev-role {
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--ocean); margin-bottom: 0.9rem;
+}
+.dev-bio { font-size: 0.83rem; color: var(--stone); line-height: 1.75; flex: 1; margin-bottom: 1.2rem; }
+.dev-contacts { display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; }
+.dev-contact-btn {
+  font-size: 0.76rem; font-weight: 600; padding: 0.4rem 0.9rem;
+  border: 1.5px solid var(--pebble); border-radius: 100px;
+  color: var(--stone); text-decoration: none;
+  transition: all 0.2s;
+}
+.dev-contact-btn:hover { background: var(--ocean); border-color: var(--ocean); color: #fff; }
+
 /* ── RESPONSIVE NEW PAGES ─────────────────────────────────── */
 @media (max-width: 1100px) {
   .top5-item { grid-template-columns: 70px 180px 1fr; }
@@ -1447,3 +1565,22 @@ section.section {
   color: #fff;
 }
 .signin-page-text em { font-style: italic; color: var(--sand); }
+
+/* ── RESPONSIVE — ABOUT & CONTACT NEW SECTIONS ────────────── */
+@media (max-width: 1024px) {
+  .about-split         { grid-template-columns: 1fr; }
+  .about-split-img     { height: 280px; }
+  .about-pillars       { grid-template-columns: 1fr 1fr; }
+  .officials-grid      { grid-template-columns: 1fr 1fr; }
+  .emergency-cards     { grid-template-columns: 1fr 1fr; }
+  .dev-team-grid       { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .about-pillars       { grid-template-columns: 1fr; }
+  .officials-grid      { grid-template-columns: 1fr; }
+  .emergency-cards     { grid-template-columns: 1fr; }
+  .dev-team-grid       { grid-template-columns: 1fr 1fr; }
+  .about-stats-row     { gap: 0.6rem; }
+  .about-stat          { padding: 1rem 1.2rem; min-width: 100px; }
+  .about-stat-num      { font-size: 1.5rem; }
+}
