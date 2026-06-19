@@ -343,8 +343,8 @@
       }
       
       // Palitan ang disenyo at teksto ng mga bagong malinis na buttons
-      desktopBtn.innerHTML = `👋 Hello! (Logout)`;
-      mobileBtn.innerHTML = `👋 Hello! (Logout)`;
+      desktopBtn.innerHTML = `👋 Hello! [name] (Logout)`;
+      mobileBtn.innerHTML = `👋 Hello! [name] (Logout)`;
       
       // Gagawa tayo ng malinis na action para sa pag-logout
       const logoutAction = (e) => {
