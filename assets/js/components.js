@@ -185,19 +185,17 @@
   /* ── BUILD SIGN-IN MODAL ────────────────────────────────── */
   function buildModal() {
     return `
-<div id="signin-modal" class="signin-overlay" aria-modal="true" role="dialog" aria-hidden="true">
-  <div class="signin-panel">
-    <button class="signin-close" id="signin-close" aria-label="Close">&#x2715;</button>
+    <div id="signin-modal" class="signin-overlay" aria-modal="true" role="dialog" aria-hidden="true">
+      <div class="signin-panel">
+      <button class="signin-close" id="signin-close" aria-label="Close">&#x2715;</button>
 
-    <!-- Step 1: choose auth method -->
-    <div id="signin-step-1" class="signin-step">
-      <div class="signin-logo-mark">ZambaLesGo!</div>
-      <h2 class="signin-heading">WELCOME BACK!</h2>
-      <p class="signin-sub">Sign in to book and explore the wonderful Zambales.</p>
+      <div id="signin-step-1" class="signin-step">
+        <div class="signin-logo-mark">ZambaLesGo!</div>
+        <h2 class="signin-heading">WELCOME BACK!</h2>
+        <p class="signin-sub">Sign in to book and explore the wonderful Zambales.</p>
 
-      <button class="signin-provider-btn" id="btn-email">Continue with Email</button>
+        <button class="signin-provider-btn" id="btn-email">Continue with Email</button>
 
-      <div id="signin-step1">
         <button class="signin-provider-btn" id="btn-google">
           <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -205,33 +203,32 @@
             <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
             <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
           </svg>
-          Continue with Google
+            Continue with Google
         </button>
 
-      <p class="signin-legal">
-        By proceeding, you agree and have read our
-        <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.
-      </p>
-    </div>
+        <p class="signin-legal">
+          By proceeding, you agree and have read our
+          <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.
+        </p>
+      </div>
 
-    <!-- Step 2: email entry -->
     <div id="signin-step-2" class="signin-step" hidden>
       <button class="signin-back" id="signin-back" aria-label="Back">&#8592; Back</button>
       <label class="signin-field-label" for="signin-email-input">E-mail address</label>
-      <input type="email" id="signin-email-input" class="signin-email-input"
-             placeholder="" autocomplete="email" />
+      <input type="email" id="signin-email-input" class="signin-email-input" placeholder="" autocomplete="email" />
       <button class="signin-next-btn" id="signin-next">Next</button>
       <div class="signin-remember-row">
         <label><input type="checkbox" /> Remember me</label>
         <a href="#">Need Help?</a>
       </div>
-
+    </div>
 
     <div class="signin-footer-link">
       Or <a href="${R}pages/signup.html">click here</a> to create your free account.
     </div>
-  </div>
-</div>`;
+
+      </div>
+    </div>`;
   }
 
   /* ── INJECT ─────────────────────────────────────────────── */
@@ -344,7 +341,7 @@
       
       // Palitan ang disenyo at teksto ng mga bagong malinis na buttons
       desktopBtn.innerHTML = `👋 Hello! [name] (Logout)`;
-      mobileBtn.innerHTML = `👋 Hello! [name] (Logout)`;
+      mobileBtn.innerHTML = `👋 Hello! [name](Logout)`;
       
       // Gagawa tayo ng malinis na action para sa pag-logout
       const logoutAction = (e) => {
