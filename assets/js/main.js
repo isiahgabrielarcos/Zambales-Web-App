@@ -187,21 +187,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ── PARALLAX HERO ───────────────────────────────────────── */
-  const heroSection = document.querySelector(".hero");
-  if (heroSection) {
-    window.addEventListener(
-      "scroll",
-      () => {
-        const scrolled = window.scrollY;
-        const heroBg = heroSection.querySelector(".hero-bg");
-        if (heroBg && scrolled < window.innerHeight) {
-          heroBg.style.transform = `scale(1) translateY(${scrolled * 0.3}px)`;
-        }
-      },
-      { passive: true },
-    );
-  }
+  /* ── HERO BG ─────────────────────────────────────────────── */
+  /* Parallax disabled — the hero background stays fixed/static. */
 
   /* ── GALLERY DRAG SCROLL ─────────────────────────────────── */
   const galleryStrip = document.querySelector(".gallery-strip");
@@ -268,4 +255,10 @@ document.addEventListener("DOMContentLoaded", () => {
     el.dataset.count = el.textContent.replace(/[^\d.]/g, "");
     counterObserver.observe(el);
   });
+});
+
+/* Signup Page Google Feature Simulation */
+document.getElementById('google-signup')?.addEventListener('click', () => {
+  alert('ZambaLesGo! Community Hub:\nSuccessfully imported your Google Profile data! Redirecting...');
+  window.location.href = '../index.html';
 });
