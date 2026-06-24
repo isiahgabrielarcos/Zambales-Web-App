@@ -269,9 +269,3 @@ document.addEventListener("DOMContentLoaded", () => {
     counterObserver.observe(el);
   });
 });
-
-/* Signup Page Google Feature Simulation */
-  document.getElementById('google-signup')?.addEventListener('click', () => {
-    alert('🌊 ZambaLesGo! Community Hub:\nSuccessfully imported your Google Profile data! Redirecting...');
-    window.location.href = '../index.html';
-  });
