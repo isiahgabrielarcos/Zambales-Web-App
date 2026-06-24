@@ -206,7 +206,7 @@
         <input type="password" id="signin-password-input" placeholder="Enter your password">
         <span id="signin-error-msg" style="color: var(--coral); font-size: 0.8rem; display: block; margin-top: 0.5rem;"></span>
       </div>
-      <button class="signin-next-btn" id="signin-next">Next</button>
+      <button class="signin-next-btn" id="signin-next">Login</button>
       <div class="signin-remember-row">
         <label><input type="checkbox" /> Remember me</label>
         <a href="#">Need Help?</a>

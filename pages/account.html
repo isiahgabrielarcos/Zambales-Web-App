@@ -13,7 +13,6 @@
 <div id="nav-placeholder"></div>
 <div style="height:72px"></div>
 
-<!-- PAGE HEADER -->
 <div style="background:var(--ocean);padding:2.5rem var(--pad-x)">
   <p style="font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--sand);margin-bottom:0.4rem">Your Account</p>
   <h1 style="font-family:var(--ff-display);font-size:clamp(1.6rem,3vw,2.4rem);color:#fff;font-weight:300">
@@ -21,10 +20,8 @@
   </h1>
 </div>
 
-<!-- MAIN LAYOUT -->
 <div class="account-layout" id="account-root">
 
-  <!-- SIDEBAR -->
   <aside class="account-sidebar">
     <div class="acct-avatar-wrap">
       <div class="acct-avatar" id="acct-avatar">?</div>
@@ -46,10 +43,8 @@
     </div>
   </aside>
 
-  <!-- MAIN CONTENT -->
   <div class="account-main">
 
-    <!-- ── PROFILE SECTION ── -->
     <div class="acct-section" id="section-profile">
       <div class="acct-section-header">
         <h2>Personal Information</h2>
@@ -82,7 +77,6 @@
       </div>
     </div>
 
-    <!-- ── SECURITY SECTION ── -->
     <div class="acct-section" id="section-security" hidden>
       <div class="acct-section-header">
         <h2>Change Password</h2>
@@ -113,7 +107,6 @@
       </div>
     </div>
 
-    <!-- ── DELETE ZONE ── -->
     <div class="acct-delete-zone" id="section-delete" hidden>
       <h2>Delete Account</h2>
       <p>
@@ -126,7 +119,6 @@
   </div>
 </div>
 
-<!-- DELETE CONFIRM MODAL -->
 <div class="acct-modal-overlay" id="delete-modal" aria-modal="true" role="dialog" aria-hidden="true">
   <div class="acct-modal-box">
     <div class="acct-modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></div>
@@ -235,27 +227,69 @@
     showToast('toast-profile');
   });
 
-  /* ── password form ──────────────────────────────────────── */
-  document.getElementById('password-form')?.addEventListener('submit', function (e) {
+  /* 🔄 REAL PASSWORD UPDATE HANDLER (Fixed & Operational) */
+  document.getElementById('password-form')?.addEventListener('submit', async function (e) {
     e.preventDefault();
-    setErr('acct-cur-pw', 'err-cur-pw', '');
-    setErr('acct-new-pw', 'err-new-pw', '');
-    setErr('acct-conf-pw', 'err-conf-pw', '');
 
-    const cur  = document.getElementById('acct-cur-pw').value;
-    const nw   = document.getElementById('acct-new-pw').value;
-    const conf = document.getElementById('acct-conf-pw').value;
+    // I-reset ang mga dating error messages gamit ang tamang HTML input IDs
+    ['acct-cur-pw','acct-new-pw','acct-conf-pw'].forEach(id => {
+      const input = document.getElementById(id);
+      if (input) input.classList.remove('input-error');
+    });
+    ['err-cur-pw','err-new-pw','err-conf-pw'].forEach(id => {
+      const span = document.getElementById(id);
+      if (span) span.textContent = '';
+    });
+
+    const oldPw = document.getElementById('acct-cur-pw').value;
+    const newPw = document.getElementById('acct-new-pw').value;
+    const conf  = document.getElementById('acct-conf-pw').value;
+
     let valid = true;
 
-    if (!cur) { setErr('acct-cur-pw', 'err-cur-pw', 'Current password is required.'); valid = false; }
-    if (!nw)  { setErr('acct-new-pw', 'err-new-pw', 'New password is required.'); valid = false; }
-    else if (nw.length < 8) { setErr('acct-new-pw', 'err-new-pw', 'Must be at least 8 characters.'); valid = false; }
+    if (!oldPw) { setErr('acct-cur-pw', 'err-cur-pw', 'Current password is required.'); valid = false; }
+    if (!newPw) { setErr('acct-new-pw', 'err-new-pw', 'New password is required.'); valid = false; }
+    else if (newPw.length < 8) { setErr('acct-new-pw', 'err-new-pw', 'Must be at least 8 characters.'); valid = false; }
     if (!conf) { setErr('acct-conf-pw', 'err-conf-pw', 'Please confirm your new password.'); valid = false; }
-    else if (nw && conf !== nw) { setErr('acct-conf-pw', 'err-conf-pw', 'Passwords do not match.'); valid = false; }
+    else if (newPw && conf !== newPw) { setErr('acct-conf-pw', 'err-conf-pw', 'Passwords do not match.'); valid = false; }
+    
     if (!valid) return;
 
-    this.reset();
-    showToast('toast-password');
+    // Kunin ang email ng kasalukuyang naka-login mula sa localStorage
+    const currentUser = JSON.parse(localStorage.getItem('zam_user') || '{}');
+    if (!currentUser.email) {
+      alert('❌ Error: No logged-in session found. Please sign in again.');
+      return;
+    }
+
+    // I-pack ang data para ipadala sa PHP script natin
+    const formData = new FormData();
+    formData.append('email', currentUser.email);
+    formData.append('old_password', oldPw);
+    formData.append('new_password', newPw);
+
+    try {
+      const res = await fetch('../api/update_password.php', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        this.reset(); // I-clear ang input fields kapag matagumpay ang update
+        showToast('toast-password'); // Ipakita ang inyong integrated validation toast!
+      } else {
+        // Kapag mali ang lumang password o may backend verification issue
+        if (data.field === 'old_password') {
+          setErr('acct-cur-pw', 'err-cur-pw', data.error);
+        } else {
+          alert('❌ Error: ' + data.error);
+        }
+      }
+    } catch (err) {
+      alert('❌ Could not connect to the password management server.');
+    }
   });
 
   /* ── delete account modal ───────────────────────────────── */
@@ -275,10 +309,42 @@
   document.getElementById('btn-cancel-delete')?.addEventListener('click', closeDeleteModal);
   deleteModal?.addEventListener('click', (e) => { if (e.target === deleteModal) closeDeleteModal(); });
 
-  document.getElementById('btn-do-delete')?.addEventListener('click', () => {
-    localStorage.removeItem('zam_user');
-    window.location.href = '../index.html';
+  document.getElementById('btn-do-delete')?.addEventListener('click', async () => {
+    // Kunin ang email ng kasalukuyang naka-login mula sa localStorage
+    const currentUser = JSON.parse(localStorage.getItem('zam_user') || '{}');
+    
+    if (!currentUser.email) {
+      alert('❌ Error: No logged-in session found.');
+      return;
+    }
+
+    // I-pack ang target email account identifier para ibigay sa PHP
+    const formData = new FormData();
+    formData.append('email', currentUser.email);
+
+    try {
+      const res = await fetch('../api/delete_account.php', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        // Matagumpay ang pagbura sa database!
+        // Linisin ang temporary browser memory at ibalik sila sa Home Page
+        localStorage.removeItem('zam_user');
+        alert('🌊 Your account has been permanently closed. We hope to see you again!');
+        window.location.href = '../index.html';
+      } else {
+        alert('❌ Error: ' + data.error);
+      }
+    } catch (err) {
+      alert('❌ Could not connect to the account destruction server.');
+    }
   });
+
+
 })();
 </script>
 </body>
