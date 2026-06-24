@@ -303,66 +303,6 @@
 
     /* open triggers */
 
-    /* Google Sign-In & Log-Out Simulation Trick (Fixed Clean Version) */
-    document.getElementById('btn-google')?.addEventListener('click', () => {
-      alert('ZambaLesGo! Authentication:\nConnecting safely to Google Services...');
-      closeModal();
-
-      // Patakbuhin ang ating ligtas at malinis na login state management
-      handleFakeLogin();
-    });
-
-    function handleFakeLogin() {
-      let desktopBtn = document.getElementById('open-signin');
-      let mobileBtn = document.getElementById('mobile-signin');
-      
-      // PRO-TRICK: I-clone natin ang mga buttons para permanenteng mabura 
-      // ang nakasapaw na lumang "openModal" listeners mula sa itaas ng file.
-      if (desktopBtn) {
-        const newDesktopBtn = desktopBtn.cloneNode(true);
-        desktopBtn.parentNode.replaceChild(newDesktopBtn, desktopBtn);
-        desktopBtn = newDesktopBtn; // Palitan natin ang reference sa bago
-      }
-      if (mobileBtn) {
-        const newMobileBtn = mobileBtn.cloneNode(true);
-        mobileBtn.parentNode.replaceChild(newMobileBtn, mobileBtn);
-        mobileBtn = newMobileBtn;
-      }
-      
-      // Palitan ang disenyo at teksto ng mga bagong malinis na buttons
-      desktopBtn.innerHTML = `Hello! [name] (Logout)`;
-      mobileBtn.innerHTML = `Hello! [name] (Logout)`;
-      
-      // Gagawa tayo ng malinis na action para sa pag-logout
-      const logoutAction = (e) => {
-        e.preventDefault();
-        
-        if (confirm('Gusto mo ba mag-log out sa ZambaLesGo!?')) {
-          alert('Successfully logged out!');
-          
-          // I-clone natin ulit para burahin naman ang logout action 
-          // at ibalik sa orihinal na "Sign In" state ang website
-          const resetDesktop = desktopBtn.cloneNode(true);
-          resetDesktop.innerHTML = 'Sign In';
-          desktopBtn.parentNode.replaceChild(resetDesktop, desktopBtn);
-          
-          const resetMobile = mobileBtn.cloneNode(true);
-          resetMobile.innerHTML = 'Sign In';
-          mobileBtn.parentNode.replaceChild(resetMobile, mobileBtn);
-          
-          // Muling ibalik ang orihinal na utos na magbubukas ng login modal kapag kinlik muli
-          resetDesktop.addEventListener('click', (evt) => { evt.preventDefault(); openModal(); });
-          resetMobile.addEventListener('click', (evt) => { evt.preventDefault(); openModal(); });
-        }
-      };
-      
-      // Isaksak ang malinis na logout triggers nang walang kasunod na popup
-      desktopBtn.addEventListener('click', logoutAction);
-      mobileBtn.addEventListener('click', logoutAction);
-    }
-    
-    // -------------------------------
-
     document.getElementById('open-signin')?.addEventListener('click', (e) => {
       e.preventDefault(); openModal();
     });
@@ -392,51 +332,43 @@
       step1.hidden = false; step2.hidden = true;
     });
 
-    /* 🔄 Bagong Real Sign-In Handler (Pinalitan ang luma) */
     document.getElementById('signin-next')?.addEventListener('click', async () => {
       const email = document.getElementById('signin-email-input')?.value.trim();
       const password = document.getElementById('signin-password-input')?.value;
       const errorSpan = document.getElementById('signin-error-msg');
 
-    // I-clear ang lumang error message kung mayroon man
-    if (errorSpan) errorSpan.textContent = '';
+      if (errorSpan) errorSpan.textContent = '';
 
-    // Siguraduhing may laman ang email at password
       if (!email || !password) {
         if (errorSpan) errorSpan.textContent = 'Please enter both email and password.';
         return;
       }
 
-    // I-pack ang data para ipadala sa PHP
-    const formData = new FormData();
-    formData.append('email', email);
-    formData.append('password', password);
+      const formData = new FormData();
+      formData.append('email', email);
+      formData.append('password', password);
 
-  try {
-    // Kakausapin natin ang totoong login.php backend gamit ang 'R' network path
-    const res = await fetch(R + 'api/login.php', {
-      method: 'POST',
-      body: formData
-    });
+      try {
+        const res = await fetch(R + 'api/login.php', {
+          method: 'POST',
+          body: formData
+        });
+        const data = await res.json();
 
-      const data = await res.json();
-
-      if (data.success) {
-        // Kapag tama ang password, i-save ang info at i-reload ang page
-      localStorage.setItem('zam_user', JSON.stringify({
-        name: data.user.name,
-        email: data.user.email,
-        phone: data.user.phone
-        }));
+        if (data.success) {
+          localStorage.setItem('zam_user', JSON.stringify({
+            name: data.user.name,
+            email: data.user.email,
+            phone: data.user.phone
+          }));
           window.location.reload();
-      } else {
-        // Kapag mali ang password o email, ipakita ang error mula sa PHP
-        if (errorSpan) errorSpan.textContent = data.error;
+        } else {
+          if (errorSpan) errorSpan.textContent = data.error;
+        }
+      } catch (err) {
+        if (errorSpan) errorSpan.textContent = 'Could not connect to the authentication server.';
       }
-    } catch (err) {
-      if (errorSpan) errorSpan.textContent = 'Could not connect to the authentication server.';
-    }
-  });
+    });
 
     /* auto-open on pages that request it (e.g. signin.html) */
     if (document.body.classList.contains('auto-signin')) {

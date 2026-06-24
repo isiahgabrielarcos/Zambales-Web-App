@@ -172,26 +172,22 @@
     btn.disabled = true;
 
     try {
-      // Magpapadala tayo ng real request sa ating bagong PHP file gamit ang FormData
       const res = await fetch('../api/signup.php', {
         method: 'POST',
         body: new FormData(this)
       });
-      
+
       const data = await res.json();
 
       if (data.success) {
-        // Kapag matagumpay, pansamantalang i-save sa browser memory ang user session state 
-        // para magbago ang itsura ng navigation profile sa dashboard
         localStorage.setItem('zam_user', JSON.stringify({ name: name, email: email, phone: phone }));
-        alert('🌊 Account created successfully! Welcome to ZambaLesGo!');
+        alert('Account created successfully! Welcome to ZambaLesGo!');
         window.location.href = '../index.html';
       } else {
-        // Kung may error mula sa database engine (halimbawa, gamit na ang email), ipakita natin ito
-        alert('❌ Error: ' + data.errors.join('\n'));
+        alert('Error: ' + data.errors.join('\n'));
       }
     } catch (err) {
-      alert('❌ Could not reach the server. Please check your XAMPP Apache connection.');
+      alert('Could not reach the server. Please check your XAMPP Apache connection.');
     } finally {
       btn.textContent = originalText;
       btn.disabled = false;

@@ -12,7 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// Isama ang db connection parameters running on port 3307
 require_once __DIR__ . '/config/db.php';
 
 $email = trim($_POST['email'] ?? '');
@@ -24,7 +23,6 @@ if ($email === '') {
 }
 
 try {
-    // 1. Check muna natin kung nage-exist ba talaga ang user account na ito
     $stmt = $pdo->prepare('SELECT id FROM users WHERE email = ?');
     $stmt->execute([$email]);
     $user = $stmt->fetch();
@@ -35,17 +33,14 @@ try {
         exit;
     }
 
-    // 2. THE SQL DELETE QUERY: Burahin ang row sa database table permanently
     $delete_stmt = $pdo->prepare('DELETE FROM users WHERE id = ?');
     $delete_stmt->execute([$user['id']]);
 
-    // 3. I-clear ang server session tokens kung sakaling naka-set ito
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
     session_destroy();
 
-    // Magpadala ng success approval token pabalik sa interface app screen
     echo json_encode(['success' => true]);
 
 } catch (PDOException $e) {

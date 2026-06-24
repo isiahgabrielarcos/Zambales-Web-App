@@ -227,11 +227,9 @@
     showToast('toast-profile');
   });
 
-  /* 🔄 REAL PASSWORD UPDATE HANDLER (Fixed & Operational) */
   document.getElementById('password-form')?.addEventListener('submit', async function (e) {
     e.preventDefault();
 
-    // I-reset ang mga dating error messages gamit ang tamang HTML input IDs
     ['acct-cur-pw','acct-new-pw','acct-conf-pw'].forEach(id => {
       const input = document.getElementById(id);
       if (input) input.classList.remove('input-error');
@@ -255,14 +253,12 @@
     
     if (!valid) return;
 
-    // Kunin ang email ng kasalukuyang naka-login mula sa localStorage
     const currentUser = JSON.parse(localStorage.getItem('zam_user') || '{}');
     if (!currentUser.email) {
-      alert('❌ Error: No logged-in session found. Please sign in again.');
+      alert('Error: No logged-in session found. Please sign in again.');
       return;
     }
 
-    // I-pack ang data para ipadala sa PHP script natin
     const formData = new FormData();
     formData.append('email', currentUser.email);
     formData.append('old_password', oldPw);
@@ -277,18 +273,17 @@
       const data = await res.json();
 
       if (data.success) {
-        this.reset(); // I-clear ang input fields kapag matagumpay ang update
-        showToast('toast-password'); // Ipakita ang inyong integrated validation toast!
+        this.reset();
+        showToast('toast-password');
       } else {
-        // Kapag mali ang lumang password o may backend verification issue
         if (data.field === 'old_password') {
           setErr('acct-cur-pw', 'err-cur-pw', data.error);
         } else {
-          alert('❌ Error: ' + data.error);
+          alert('Error: ' + data.error);
         }
       }
     } catch (err) {
-      alert('❌ Could not connect to the password management server.');
+      alert('Could not connect to the password management server.');
     }
   });
 
@@ -310,15 +305,13 @@
   deleteModal?.addEventListener('click', (e) => { if (e.target === deleteModal) closeDeleteModal(); });
 
   document.getElementById('btn-do-delete')?.addEventListener('click', async () => {
-    // Kunin ang email ng kasalukuyang naka-login mula sa localStorage
     const currentUser = JSON.parse(localStorage.getItem('zam_user') || '{}');
-    
+
     if (!currentUser.email) {
-      alert('❌ Error: No logged-in session found.');
+      alert('Error: No logged-in session found.');
       return;
     }
 
-    // I-pack ang target email account identifier para ibigay sa PHP
     const formData = new FormData();
     formData.append('email', currentUser.email);
 
@@ -331,16 +324,14 @@
       const data = await res.json();
 
       if (data.success) {
-        // Matagumpay ang pagbura sa database!
-        // Linisin ang temporary browser memory at ibalik sila sa Home Page
         localStorage.removeItem('zam_user');
-        alert('🌊 Your account has been permanently closed. We hope to see you again!');
+        alert('Your account has been permanently closed. We hope to see you again!');
         window.location.href = '../index.html';
       } else {
-        alert('❌ Error: ' + data.error);
+        alert('Error: ' + data.error);
       }
     } catch (err) {
-      alert('❌ Could not connect to the account destruction server.');
+      alert('Could not connect to the account management server.');
     }
   });
 

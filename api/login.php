@@ -12,7 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// Include our database credentials running on Port 3307
 require_once __DIR__ . '/config/db.php';
 
 $email    = trim($_POST['email'] ?? '');
@@ -25,31 +24,23 @@ if ($email === '' || $password === '') {
 }
 
 try {
-    // Look up if this email exists inside our logs
     $stmt = $pdo->prepare('SELECT * FROM users WHERE email = ?');
     $stmt->execute([$email]);
     $user = $stmt->fetch();
 
-    // Verification check: If the email wasn't found, stop immediately
     if (!$user) {
         http_response_code(401);
         echo json_encode(['success' => false, 'error' => 'Invalid email or password.']);
         exit;
     }
 
-    // 💡 The Key Verification Step
-    // password_verify() automatically takes the plain text input ($password),
-    // hashes it, and checks if it fits the safe mold stored in ($user['password_hash'])
     if (password_verify($password, $user['password_hash'])) {
-        
-        // Start a secure server-side verification tracking token
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['user_name'] = $user['name'];
 
-        // Return a success approval token and basic user traits back to the layout
         echo json_encode([
             'success' => true,
             'user' => [
@@ -59,7 +50,6 @@ try {
             ]
         ]);
     } else {
-        // Passwords don't match!
         http_response_code(401);
         echo json_encode(['success' => false, 'error' => 'Invalid email or password.']);
     }
