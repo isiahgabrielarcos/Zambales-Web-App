@@ -37,7 +37,7 @@ $destinations = [
     'tag'      => '🌊 Cove',
     'desc'     => 'A longer, wilder companion to Anawangin — with a freshwater lagoon perfect for swimming and a backdrop of volcanic peaks draped in greenery.',
     'chips'    => ['Camping', 'Boat Trip', 'Snorkelling', 'Lagoon'],
-    'img'      => 'https://images.unsplash.com/photo-1540202404-a2f29564651e?w=700&q=80',
+    'img'      => 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhNevsbzDhilbMWVkQUI_gZsvDOI0nxQABeieOOX26HxPAP3bPrLq0Ql3NEjmoUVhKKhItmjq3HVSkvoDtNYyrt6nkrnAoSv3oD1OXHHGDCIJBg55IRIIpZjYhxK7aSANrAKpiV-dhR2fU2s3M7bGCzpts_S3uKeoDTXhoiI-Ku0uqAu7zoIE1EHEmd/s2999/1685152721475.jpg',
     'alt'      => 'Nagsasa Cove white sand and turquoise water',
   ],
   [

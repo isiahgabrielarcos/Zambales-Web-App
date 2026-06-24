@@ -29,8 +29,10 @@
     try { return JSON.parse(localStorage.getItem('zam_user') || 'null'); } catch { return null; }
   }
   function logOut() {
-    localStorage.removeItem('zam_user');
-    window.location.reload();
+    fetch(R + 'api/logout.php', { method: 'POST' }).finally(() => {
+      localStorage.removeItem('zam_user');
+      window.location.reload();
+    });
   }
 
   /* ── BUILD NAV ──────────────────────────────────────────── */
@@ -201,11 +203,9 @@
       <button class="signin-back" id="signin-back" aria-label="Back">&#8592; Back</button>
       <label class="signin-field-label" for="signin-email-input">E-mail address</label>
       <input type="email" id="signin-email-input" class="signin-email-input" placeholder="" autocomplete="email" />
-        <div class="form-group" style="margin-top: 1rem;">
-        <label for="signin-password-input">Password</label>
-        <input type="password" id="signin-password-input" placeholder="Enter your password">
-        <span id="signin-error-msg" style="color: var(--coral); font-size: 0.8rem; display: block; margin-top: 0.5rem;"></span>
-      </div>
+      <label class="signin-field-label" for="signin-password-input">Password</label>
+      <input type="password" id="signin-password-input" class="signin-email-input" placeholder="Enter your password" autocomplete="current-password" />
+      <span id="signin-error-msg" style="color: var(--coral); font-size: 0.8rem; display: block; margin-top: 0.5rem;"></span>
       <button class="signin-next-btn" id="signin-next">Login</button>
       <div class="signin-remember-row">
         <label><input type="checkbox" /> Remember me</label>
