@@ -578,6 +578,7 @@ footer > :not(.footer-blob) { position: relative; z-index: 1; }
 .footer-links-right { display: flex; gap: 2.5rem clamp(2rem, 4vw, 4.5rem); flex-wrap: wrap; }
 .footer-links-right { text-align: right; }
 .footer-link-col h4 {
+  font-family: var(--ff-display);
   font-size: 1.45rem; font-weight: 700;
   color: #fff; margin-bottom: 1rem;
 }
@@ -1374,7 +1375,7 @@ footer > :not(.footer-blob) { position: relative; z-index: 1; }
 }
 .acct-modal-overlay.open .acct-modal-box { transform: translateY(0); }
 .acct-modal-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
-.acct-modal-box h3 { font-size: 1.2rem; font-weight: 700; color: var(--ink); margin-bottom: 0.5rem; }
+.acct-modal-box h3 { font-family: var(--ff-display); font-size: 1.2rem; font-weight: 700; color: var(--ink); margin-bottom: 0.5rem; }
 .acct-modal-box p { font-size: 0.85rem; color: var(--stone); line-height: 1.7; margin-bottom: 1.5rem; }
 .acct-modal-actions { display: flex; gap: 0.8rem; justify-content: center; }
 .acct-modal-cancel {
