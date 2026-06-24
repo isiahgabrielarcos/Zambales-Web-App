@@ -86,8 +86,6 @@
 
       </form>
 
-      <div class="signup-divider">or</div>
-      
       <div class="signup-footer-link">
         Already have an account?
         <a href="#" data-open-signin>Sign In</a>
@@ -122,7 +120,7 @@
     document.getElementById(id)?.addEventListener('input', () => setError(id, errIds[i], ''));
   });
 
-  document.getElementById('signup-form')?.addEventListener('submit', function (e) {
+  document.getElementById('signup-form')?.addEventListener('submit', async function (e) {
     e.preventDefault();
 
     [['signup-name','err-name'],['signup-email','err-email'],
@@ -168,9 +166,36 @@
       return;
     }
 
-    /* save session and redirect */
-    localStorage.setItem('zam_user', JSON.stringify({ name, email, phone }));
-    window.location.href = '../index.html';
+    const btn = this.querySelector('.signup-btn');
+    const originalText = btn.textContent;
+    btn.textContent = 'Creating Account...';
+    btn.disabled = true;
+
+    try {
+      // Magpapadala tayo ng real request sa ating bagong PHP file gamit ang FormData
+      const res = await fetch('../api/signup.php', {
+        method: 'POST',
+        body: new FormData(this)
+      });
+      
+      const data = await res.json();
+
+      if (data.success) {
+        // Kapag matagumpay, pansamantalang i-save sa browser memory ang user session state 
+        // para magbago ang itsura ng navigation profile sa dashboard
+        localStorage.setItem('zam_user', JSON.stringify({ name: name, email: email, phone: phone }));
+        alert('🌊 Account created successfully! Welcome to ZambaLesGo!');
+        window.location.href = '../index.html';
+      } else {
+        // Kung may error mula sa database engine (halimbawa, gamit na ang email), ipakita natin ito
+        alert('❌ Error: ' + data.errors.join('\n'));
+      }
+    } catch (err) {
+      alert('❌ Could not reach the server. Please check your XAMPP Apache connection.');
+    } finally {
+      btn.textContent = originalText;
+      btn.disabled = false;
+    }
   });
 })();
 </script>
