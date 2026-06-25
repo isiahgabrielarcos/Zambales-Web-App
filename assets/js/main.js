@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!wasOpen) item.classList.add("open");
     });
   });
-  // Hey
+
   /* ── FOOTER YEAR ─────────────────────────────────────────── */
   document.querySelectorAll("[data-year]").forEach((el) => {
     el.textContent = new Date().getFullYear();
@@ -257,7 +257,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-/* Signup Page Google Feature Simulation */
 document.getElementById('google-signup')?.addEventListener('click', () => {
   alert('ZambaLesGo! Community Hub:\nSuccessfully imported your Google Profile data! Redirecting...');
   window.location.href = '../index.html';

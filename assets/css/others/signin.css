@@ -1,0 +1,32 @@
+/* ============================================================
+   ZAMBALES TOURISM — signin.css
+   ============================================================ */
+
+/* ── SIGN-IN PAGE BACKGROUND ──────────────────────────────── */
+.signin-page-hero {
+  position: relative; height: calc(100vh - 72px);
+  overflow: hidden; display: flex; align-items: center; justify-content: center;
+}
+.signin-page-bg {
+  position: absolute; inset: 0;
+  background: center/cover no-repeat;
+  transform: scale(1.05);
+}
+.signin-page-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(11,53,137,0.55), rgba(183,16,34,0.4));
+}
+.signin-page-text {
+  position: relative; z-index: 1; text-align: center; color: #fff;
+  padding: 2rem;
+}
+.signin-page-text p {
+  font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(255,255,255,0.7); margin-bottom: 0.8rem;
+}
+.signin-page-text h1 {
+  font-family: var(--ff-display); font-size: clamp(3.5rem, 8vw, 7rem);
+  font-weight: 300; line-height: 0.95; letter-spacing: -0.01em;
+  color: #fff;
+}
+.signin-page-text em { font-style: italic; color: var(--sand); }

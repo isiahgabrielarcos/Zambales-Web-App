@@ -1,0 +1,104 @@
+/* ============================================================
+   ZAMBALES TOURISM — accommodations.css
+   ============================================================ */
+
+/* ── ACCOMMODATIONS FILTER ────────────────────────────────── */
+.accom-filter {
+  background: var(--cream);
+  padding: 1.2rem 4rem;
+  display: flex; gap: 0.8rem;
+  border-bottom: 1px solid rgba(200,191,176,0.3);
+  position: sticky; top: 72px; z-index: 10;
+}
+
+/* ── ACCOMMODATIONS GRID ──────────────────────────────────── */
+.accom-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.accom-card {
+  background: #fff; border-radius: 10px; overflow: hidden;
+  box-shadow: 0 2px 16px rgba(28,24,20,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.accom-card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(28,24,20,0.14); }
+.accom-card-img { height: 210px; overflow: hidden; position: relative; }
+.accom-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.accom-card:hover .accom-card-img img { transform: scale(1.06); }
+.accom-type-badge {
+  position: absolute; top: 0.8rem; left: 0.8rem;
+  background: var(--ocean); color: #fff; font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 4px;
+}
+.accom-body { padding: 1.3rem 1.4rem 1rem; }
+.accom-name { font-family: var(--ff-display); font-size: 1.3rem; font-weight: 600; color: var(--ocean); margin-bottom: 0.3rem; }
+.accom-stars { color: #f59e0b; font-size: 0.9rem; letter-spacing: 0.05em; margin-bottom: 0.6rem; }
+.accom-desc { font-size: 0.84rem; color: var(--stone); line-height: 1.7; margin-bottom: 0.8rem; }
+.accom-location { font-size: 0.78rem; color: var(--stone); display: flex; align-items: center; gap: 0.3rem; margin-bottom: 1rem; }
+.accom-actions {
+  display: flex; gap: 0.6rem; padding: 0.8rem 1.4rem;
+  border-top: 1px solid rgba(200,191,176,0.3); flex-wrap: wrap;
+}
+.accom-btn {
+  padding: 0.5rem 1rem; border-radius: 6px;
+  font-family: var(--ff-body); font-size: 0.78rem; font-weight: 600;
+  cursor: pointer; transition: all 0.2s;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 0.3rem;
+}
+.accom-btn-primary { background: var(--ocean); color: #fff; border: none; }
+.accom-btn-primary:hover { background: var(--coral); }
+.accom-btn-outline { background: none; color: var(--ocean); border: 1.5px solid var(--ocean); }
+.accom-btn-outline:hover { background: var(--ocean); color: #fff; }
+
+/* ── REVIEWS ──────────────────────────────────────────────── */
+.accom-reviews { padding: 0.8rem 1.4rem 1.2rem; border-top: 1px solid rgba(200,191,176,0.3); }
+.accom-reviews-title {
+  font-size: 0.78rem; font-weight: 700; color: var(--stone);
+  letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.7rem;
+}
+.review-item { display: flex; gap: 0.7rem; margin-bottom: 0.7rem; }
+.review-avatar {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--pebble); display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; font-weight: 700; color: #fff; flex-shrink: 0;
+}
+.review-content { flex: 1; }
+.review-meta { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.2rem; }
+.review-name { font-size: 0.8rem; font-weight: 700; color: var(--ink); }
+.review-stars { color: #f59e0b; font-size: 0.72rem; }
+.review-text { font-size: 0.8rem; color: var(--stone); line-height: 1.55; }
+.review-form-toggle {
+  font-size: 0.78rem; font-weight: 700; color: var(--ocean);
+  background: none; border: none; cursor: pointer; padding: 0; text-decoration: underline;
+}
+.review-signin-prompt { font-size: 0.8rem; color: var(--stone); }
+.review-signin-prompt a { color: var(--ocean); font-weight: 700; text-decoration: underline; }
+.review-see-more {
+  display: block; font-size: 0.78rem; font-weight: 700; color: var(--sea);
+  background: none; border: none; cursor: pointer; padding: 0;
+  margin-top: 0.2rem; margin-bottom: 0.8rem; text-decoration: underline;
+}
+.review-form { margin-top: 0.8rem; background: #f8f9fb; border-radius: 8px; padding: 1rem; }
+.review-form label { display: block; font-size: 0.75rem; font-weight: 600; color: var(--ocean); margin-bottom: 0.3rem; }
+.review-form input, .review-form textarea, .review-form select {
+  width: 100%; padding: 0.5rem 0.7rem;
+  border: 1.5px solid var(--pebble); border-radius: 6px;
+  font-family: var(--ff-body); font-size: 0.82rem; color: var(--ink);
+  margin-bottom: 0.7rem; background: #fff;
+}
+.star-input { display: flex; gap: 0.2rem; margin-bottom: 0.7rem; font-size: 1.5rem; cursor: pointer; }
+.star-input span { color: #e0ddd8; transition: color 0.15s; }
+.star-input span.active { color: #f59e0b; }
+.review-submit-btn {
+  background: var(--ocean); color: #fff; border: none;
+  padding: 0.5rem 1.2rem; border-radius: 6px;
+  font-family: var(--ff-body); font-size: 0.82rem; font-weight: 700;
+  cursor: pointer; transition: background 0.2s;
+}
+.review-submit-btn:hover { background: var(--coral); }
+
+/* ── RESPONSIVE ───────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .accom-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .accom-filter { padding: 1rem 1.5rem; flex-wrap: wrap; }
+  .accom-grid { grid-template-columns: 1fr; }
+}

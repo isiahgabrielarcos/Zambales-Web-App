@@ -1,0 +1,70 @@
+/* ============================================================
+   ZAMBALES TOURISM — landscapes.css
+   ============================================================ */
+
+/* ── TOP-5 RANKING ────────────────────────────────────────── */
+.top5-list { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2.5rem; }
+.top5-item {
+  display: grid; grid-template-columns: 96px 420px 1fr;
+  border-radius: 10px; overflow: hidden;
+  box-shadow: 0 2px 16px rgba(28,24,20,0.07);
+  background: #fff;
+}
+.top5-rank {
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--ff-display); font-size: 4.5rem; font-weight: 700;
+  color: var(--coral); line-height: 1; background: var(--ocean);
+}
+.top5-img { overflow: hidden; aspect-ratio: 3 / 2; }
+.top5-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
+.top5-item:hover .top5-img img { transform: scale(1.05); }
+.top5-info { padding: 1.6rem 1.8rem; display: flex; flex-direction: column; justify-content: center; }
+.top5-info .dest-tag { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--coral); margin-bottom: 0.4rem; font-weight: 600; }
+.top5-info h3 { font-family: var(--ff-display); font-size: 1.5rem; font-weight: 600; color: var(--ocean); margin-bottom: 0.6rem; }
+.top5-info p { font-size: 0.86rem; color: var(--stone); line-height: 1.7; }
+
+/* ── SPOT MINI-GRID ───────────────────────────────────────── */
+.spot-mini-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; margin-top: 2.5rem; }
+.spot-mini-card {
+  border-radius: 8px; overflow: hidden; background: #fff;
+  box-shadow: 0 2px 12px rgba(28,24,20,0.07);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.spot-mini-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(28,24,20,0.13); }
+.spot-mini-card .img-wrap { height: 180px; overflow: hidden; }
+.spot-mini-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.spot-mini-card:hover img { transform: scale(1.06); }
+.spot-mini-info { padding: 1rem 1.1rem; }
+.spot-mini-info .dest-tag { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--coral); font-weight: 600; }
+.spot-mini-info h4 { font-family: var(--ff-display); font-size: 1.15rem; font-weight: 600; color: var(--ocean); margin: 0.3rem 0 0.4rem; }
+.spot-mini-info p { font-size: 0.81rem; color: var(--stone); line-height: 1.65; }
+
+/* ── ACTIVITY CARDS ───────────────────────────────────────── */
+.activity-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; margin-top: 2.5rem; }
+.activity-card {
+  background: #fff; border-radius: 10px; padding: 1.8rem 1.4rem;
+  text-align: center; border-bottom: 3px solid transparent;
+  box-shadow: 0 2px 12px rgba(28,24,20,0.06);
+  transition: border-color 0.3s, transform 0.3s;
+}
+.activity-card:hover { border-color: var(--coral); transform: translateY(-4px); }
+.activity-icon { font-size: 2.4rem; margin-bottom: 0.9rem; }
+.activity-name { font-size: 0.95rem; font-weight: 700; color: var(--ocean); margin-bottom: 0.5rem; }
+.activity-desc { font-size: 0.82rem; color: var(--stone); line-height: 1.65; }
+
+/* ── RESPONSIVE ───────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .top5-item { grid-template-columns: 70px 180px 1fr; }
+  .spot-mini-grid { grid-template-columns: repeat(2, 1fr); }
+  .activity-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 760px) {
+  .top5-item { grid-template-columns: 1fr; }
+  .top5-rank { font-size: 2.6rem; padding: 0.5rem; }
+  .top5-img { aspect-ratio: 3 / 2; }
+}
+@media (max-width: 768px) {
+  .top5-item { grid-template-columns: 50px 1fr; grid-template-rows: auto auto; }
+  .top5-img { display: none; }
+  .spot-mini-grid, .activity-grid { grid-template-columns: 1fr 1fr; }
+}

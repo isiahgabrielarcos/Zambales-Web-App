@@ -1,0 +1,108 @@
+/* ============================================================
+   ZAMBALES TOURISM — explore.css
+   ============================================================ */
+
+/* ── SPOTLIGHT SECTION ────────────────────────────────────── */
+.spotlight-section {
+  padding: 6rem var(--pad-x) 5rem;
+  background: #fff;
+}
+.spotlight-header { margin-bottom: 3rem; }
+.spotlight-title {
+  font-family: var(--ff-display); font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 700; color: var(--ink); margin-bottom: 0.4rem;
+  letter-spacing: -0.01em;
+}
+.spotlight-sub { font-size: 1rem; color: var(--stone); }
+.spotlight-sub strong { color: var(--ocean); font-style: italic; }
+
+/* ── SPOTLIGHT CARDS ──────────────────────────────────────── */
+.spotlight-cards {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+}
+.spotlight-card {
+  position: relative; border-radius: 10px; overflow: hidden;
+  height: 500px; cursor: pointer;
+}
+a.spotlight-card { display: block; text-decoration: none; color: inherit; }
+.spotlight-card img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.6s var(--ease-out-expo);
+}
+.spotlight-card:hover img { transform: scale(1.06); }
+
+.spotlight-card-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.45) 100%);
+  transition: opacity 0.4s;
+}
+.spotlight-card:hover .spotlight-card-overlay { opacity: 0.7; }
+
+.spotlight-card-label {
+  position: absolute; top: 1.4rem; left: 1.4rem; z-index: 2;
+  font-family: var(--ff-display); font-weight: 700; text-transform: uppercase;
+  font-size: clamp(1.7rem, 2.6vw, 2.4rem); color: #fff;
+  line-height: 1.1; letter-spacing: -0.01em;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+
+.spotlight-card-info {
+  position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+  background: #fff;
+  padding: 1.4rem 1.4rem 1.6rem;
+  transform: translateY(100%);
+  transition: transform 0.4s var(--ease-out-expo);
+  border-radius: 0 0 10px 10px;
+}
+.spotlight-card:hover .spotlight-card-info { transform: translateY(0); }
+.spotlight-card-info h3 {
+  font-family: var(--ff-display); font-size: 1.2rem; font-weight: 600;
+  color: var(--ocean); margin-bottom: 0.5rem;
+}
+.spotlight-card-info p { font-size: 0.84rem; color: var(--stone); line-height: 1.65; }
+
+.spotlight-card-link {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  margin-top: 0.9rem; font-size: 0.82rem; font-weight: 700;
+  color: var(--ocean); letter-spacing: 0.05em; text-transform: uppercase;
+  transition: gap 0.2s;
+}
+.spotlight-card-link:hover { gap: 0.7rem; }
+
+/* ── SPOTLIGHT TWO-ROW LAYOUT ─────────────────────────────── */
+.spotlight-row + .spotlight-row { margin-top: 1.2rem; }
+.spotlight-row-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+.spotlight-row-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+.spotlight-row-3 .spotlight-card { height: 360px; }
+
+/* ── DESTINATIONS FULL GRID ───────────────────────────────── */
+.destinations-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2rem; padding: 4rem var(--pad-x);
+  background: var(--cream);
+}
+.dest-full-card {
+  border-radius: 8px; overflow: hidden;
+  background: white;
+  box-shadow: 0 2px 20px rgba(28,24,20,0.06);
+  transition: transform 0.35s var(--ease-out-expo), box-shadow 0.35s;
+}
+.dest-full-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(28,24,20,0.12); }
+.dest-full-card .img-wrap { height: 240px; overflow: hidden; }
+.dest-full-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease-out-expo); }
+.dest-full-card:hover img { transform: scale(1.07); }
+.dest-full-info { padding: 1.6rem; }
+.dest-full-info .dest-tag { color: var(--coral); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; }
+.dest-full-info h3 { font-family: var(--ff-display); font-size: 1.5rem; color: var(--ocean); margin: 0.4rem 0 0.8rem; }
+.dest-full-info p { font-size: 0.87rem; color: var(--stone); line-height: 1.7; margin-bottom: 1.2rem; }
+.dest-chips { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+/* ── RESPONSIVE ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .spotlight-row-4, .spotlight-row-3 { grid-template-columns: 1fr 1fr; }
+  .spotlight-row-3 .spotlight-card { height: 300px; }
+  .spotlight-cards { grid-template-columns: 1fr 1fr; }
+  .spotlight-card { height: 360px; }
+  .destinations-grid { grid-template-columns: 1fr; padding: 2rem 1.5rem; }
+}

@@ -1,0 +1,40 @@
+/* ============================================================
+   ZAMBALES TOURISM — culture.css
+   ============================================================ */
+
+/* ── FESTIVAL GRID ────────────────────────────────────────── */
+.festival-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2.5rem; }
+.festival-card { border-radius: 10px; overflow: hidden; background: #fff; box-shadow: 0 2px 16px rgba(28,24,20,0.08); }
+.festival-card .img-wrap { height: 200px; overflow: hidden; }
+.festival-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.festival-card:hover img { transform: scale(1.06); }
+.festival-body { padding: 1.3rem; }
+.festival-month {
+  font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+  font-weight: 700; color: var(--coral); margin-bottom: 0.4rem;
+}
+.festival-name { font-family: var(--ff-display); font-size: 1.25rem; font-weight: 600; color: var(--ocean); margin-bottom: 0.4rem; }
+.festival-location { font-size: 0.75rem; color: var(--stone); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.3rem; }
+.festival-desc { font-size: 0.83rem; color: var(--stone); line-height: 1.7; }
+
+/* ── HERITAGE SPLIT ───────────────────────────────────────── */
+.heritage-split { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.heritage-img { overflow: hidden; min-height: 420px; }
+.heritage-img img { width: 100%; height: 100%; object-fit: cover; }
+.heritage-content {
+  padding: 5rem 4rem; background: var(--ocean);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.heritage-content .section-label { color: var(--sand); }
+.heritage-content .section-title { color: var(--cream); margin-bottom: 1.2rem; }
+.heritage-content p { color: rgba(253,248,240,0.75); font-size: 0.92rem; line-height: 1.85; margin-bottom: 1rem; }
+
+/* ── RESPONSIVE ───────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .festival-grid { grid-template-columns: 1fr 1fr; }
+  .heritage-split { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .festival-grid { grid-template-columns: 1fr; }
+  .heritage-content { padding: 3rem 1.5rem; }
+}
