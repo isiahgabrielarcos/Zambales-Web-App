@@ -1,5 +1,4 @@
 # ── Sensitive configuration ──
-api/config/db.php
 .env
 *.env
 

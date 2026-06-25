@@ -1,0 +1,44 @@
+<?php
+
+define('APP_ENV', 'development');
+
+/**
+ * api/config/db.php.example
+ * Template for the database connection.
+ *
+ * Copy this file to api/config/db.php and fill in your credentials:
+ *   cp api/config/db.php.example api/config/db.php
+ *
+ * The real db.php is gitignored — never commit credentials!
+ */
+
+define('DB_HOST',    getenv('DB_HOST')    ?: '127.0.0.1;port=3307');
+define('DB_NAME',    getenv('DB_NAME')    ?: 'zambales_tourism');
+define('DB_USER',    getenv('DB_USER')    ?: 'root');
+define('DB_PASS',    getenv('DB_PASS')    ?: '');
+define('DB_CHARSET', 'utf8mb4');
+
+$dsn = sprintf(
+    'mysql:host=%s;dbname=%s;charset=%s',
+    DB_HOST, DB_NAME, DB_CHARSET
+);
+
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   => false,
+];
+
+try {
+    $pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
+} catch (PDOException $e) {
+    // In production, log the error instead of displaying it
+    if (defined('APP_ENV') && APP_ENV === 'development') {
+        throw new PDOException($e->getMessage(), (int) $e->getCode());
+    }
+    http_response_code(500);
+    die(json_encode(['error' => 'Database connection failed. Please try again later.']));
+}
+
+
+// meow
