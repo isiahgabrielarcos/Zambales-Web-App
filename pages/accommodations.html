@@ -1,9 +1,6 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Hotels, resorts, and accommodations in Zambales, Philippines." />
   <title>Accommodations | Zambales, Philippines</title>
   <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="../assets/css/style.css" />
@@ -23,9 +20,9 @@
 <!-- FILTER -->
 <div class="accom-filter" role="navigation" aria-label="Accommodation filter">
   <button class="filter-btn active" data-type="all">All</button>
-  <button class="filter-btn" data-type="resort"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 0 1 9 9H3a9 9 0 0 1 9-9Z"/><path d="M12 12v9"/><path d="M8 21h8"/></svg> Resorts</button>
-  <button class="filter-btn" data-type="hotel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M16 14h.01"/></svg> Hotels</button>
-  <button class="filter-btn" data-type="inn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 9v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9"/><path d="M9 21v-6h6v6"/></svg> Inns &amp; B&amp;Bs</button>
+  <button class="filter-btn" data-type="resort"> Resorts</button>
+  <button class="filter-btn" data-type="hotel"> Hotels</button>
+  <button class="filter-btn" data-type="inn"> Inns &amp; B&amp;Bs</button>
 </div>
 
 <!-- GRID -->
@@ -39,8 +36,8 @@
 <script src="../assets/js/components.js" defer></script>
 <script src="../assets/js/main.js" defer></script>
 <script>
-const LOCATION_ICON = '<svg class="txt-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>';
-const GLOBE_ICON    = '<svg class="txt-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg>';
+const LOCATION_ICON = '';
+const GLOBE_ICON    = '';
 const AVATAR_COLORS = ['#0b3589','#b71022','#b45a00','#10b981','#e85d04','#6b7280'];
 const VISIBLE_REVIEWS = 2;
 const TYPE_LABELS = { resort: 'Resort', hotel: 'Hotel', inn: 'Inn' };
