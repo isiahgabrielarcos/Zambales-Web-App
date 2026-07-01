@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hotels, resorts, and accommodations in Zambales, Philippines." />
+  <title>Accommodations | Zambales, Philippines</title>
+  <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<!-- HERO -->
+<div class="page-hero" style="background-image:url('https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=1800&q=85')" aria-label="Accommodations hero">
+  <div class="page-hero-content">
+    <p class="section-label">Hotels · Resorts · Homestays</p>
+    <h1>Where to <em style="font-style:italic;font-family:var(--ff-display);color:var(--sand)">Stay</em> in Zambales</h1>
+  </div>
+</div>
+
+<!-- FILTER -->
+<div class="accom-filter" role="navigation" aria-label="Accommodation filter">
+  <button class="filter-btn active" data-type="all">All</button>
+  <button class="filter-btn" data-type="resort"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 0 1 9 9H3a9 9 0 0 1 9-9Z"/><path d="M12 12v9"/><path d="M8 21h8"/></svg> Resorts</button>
+  <button class="filter-btn" data-type="hotel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M16 14h.01"/></svg> Hotels</button>
+  <button class="filter-btn" data-type="inn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 9v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9"/><path d="M9 21v-6h6v6"/></svg> Inns &amp; B&amp;Bs</button>
+</div>
+
+<!-- GRID -->
+<section class="section" style="padding:4rem">
+  <div class="accom-grid" id="accom-grid">
+
+    <!-- 1 -->
+    <div class="accom-card" data-type="resort">
+      <div class="accom-card-img">
+        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80" alt="Subic Bay Yacht Club" loading="lazy" />
+        <span class="accom-type-badge">Resort</span>
+      </div>
+      <div class="accom-body">
+        <div class="accom-name">Subic Bay Yacht Club Resort</div>
+        <div class="accom-stars">★★★★★</div>
+        <p class="accom-desc">A premier waterfront resort overlooking Subic Bay with full marina access, water sports facilities, infinity pool, and panoramic sea view dining. Ideal for families and diving enthusiasts.</p>
+        <div class="accom-location"><svg class="txt-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Waterfront Rd, Subic Bay Freeport Zone</div>
+      </div>
+      <div class="accom-actions">
+        <a href="#" class="accom-btn accom-btn-primary"><svg class="txt-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg>Visit Website</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Subic+Bay+Yacht+Club+Resort%2C+Waterfront+Rd%2C+Subic+Bay+Freeport+Zone" target="_blank" rel="noopener noreferrer" class="accom-btn accom-btn-outline"><svg class="txt-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
+      </div>
+      <div class="accom-reviews">
+        <div class="accom-reviews-title">Guest Reviews</div>
+        <div id="reviews-1">
+          <div class="review-item">
+            <div class="review-avatar" style="background:#0b3589">MR</div>
+            <div class="review-content">
+              <div class="review-meta"><span class="review-name">Maria R.</span><span class="review-stars">★★★★★</span></div>
+              <div class="review-text">Breathtaking views and exceptional service. The diving packages are world-class.</div>
+            </div>
+          </div>
+          <div class="review-item">
+            <div class="review-avatar" style="background:#b71022">JL</div>
+            <div class="review-content">
+              <div class="review-meta"><span class="review-name">Jose L.</span><span class="review-stars">★★★★☆</span></div>
+              <div class="review-text">Great location but pricey. Worth it for a special occasion or honeymoon.</div>
+            </div>
+          </div>
+        </div>
+        <button class="review-form-toggle" onclick="toggleReviewForm('rform-1')">+ Leave a Review</button>
+        <div class="review-form" id="rform-1" style="display:none">
+          <label>Your Name</label>
+          <input type="text" placeholder="Your name" id="rname-1" />
+          <label>Rating</label>
+          <div class="star-input" id="stars-1">
+            <span onclick="setStars('stars-1',1)">★</span>
+            <span onclick="setStars('stars-1',2)">★</span>
+            <span onclick="setStars('stars-1',3)">★</span>
+            <span onclick="setStars('stars-1',4)">★</span>
+            <span onclick="setStars('stars-1',5)">★</span>
+          </div>
+          <label>Your Review</label>
+          <textarea rows="3" placeholder="Share your experience…" id="rtext-1"></textarea>
+          <button class="review-submit-btn" onclick="submitReview('reviews-1','rname-1','stars-1','rtext-1','rform-1')">Submit Review</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="accom-card" data-type="resort">
+      <div class="accom-card-img">
+        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80" alt="Crystal Beach Resort" loading="lazy" />
+        <span class="accom-type-badge">Resort</span>
+      </div>
+      <div class="accom-body">
+        <div class="accom-name">Crystal Beach Resort</div>
+        <div class="accom-stars">★★★★☆</div>
+        <p class="accom-desc">A family-friendly beachfront resort in San Antonio with crystal-clear water perfect for swimming and snorkelling. Offers air-conditioned rooms, native cottages, kayak rentals, and a seafood restaurant.</p>
+        <div class="accom-location"><svg class="txt-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Pundaquit, San Antonio, Zambales</div>
+      </div>
+      <div class="accom-actions">
+        <a href="#" class="accom-btn accom-btn-primary"><svg class="txt-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg>Visit Website</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Crystal+Beach+Resort%2C+Pundaquit%2C+San+Antonio%2C+Zambales" target="_blank" rel="noopener noreferrer" class="accom-btn accom-btn-outline"><svg class="txt-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
+      </div>
+      <div class="accom-reviews">
+        <div class="accom-reviews-title">Guest Reviews</div>
+        <div id="reviews-2">
+          <div class="review-item">
+            <div class="review-avatar" style="background:#10b981">AC</div>
+            <div class="review-content">
+              <div class="review-meta"><span class="review-name">Ana C.</span><span class="review-stars">★★★★★</span></div>
+              <div class="review-text">Perfect jump-off for the coves. Clean rooms, friendly staff, and the water is gorgeous!</div>
+            </div>
+          </div>
+        </div>
+        <button class="review-form-toggle" onclick="toggleReviewForm('rform-2')">+ Leave a Review</button>
+        <div class="review-form" id="rform-2" style="display:none">
+          <label>Your Name</label>
+          <input type="text" placeholder="Your name" id="rname-2" />
+          <label>Rating</label>
+          <div class="star-input" id="stars-2">
+            <span onclick="setStars('stars-2',1)">★</span>
+            <span onclick="setStars('stars-2',2)">★</span>
+            <span onclick="setStars('stars-2',3)">★</span>
+            <span onclick="setStars('stars-2',4)">★</span>
+            <span onclick="setStars('stars-2',5)">★</span>
+          </div>
+          <label>Your Review</label>
+          <textarea rows="3" placeholder="Share your experience…" id="rtext-2"></textarea>
+          <button class="review-submit-btn" onclick="submitReview('reviews-2','rname-2','stars-2','rtext-2','rform-2')">Submit Review</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="accom-card" data-type="hotel">
+      <div class="accom-card-img">
+        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" alt="Harbor Point Suites" loading="lazy" />
+        <span class="accom-type-badge">Hotel</span>
+      </div>
+      <div class="accom-body">
+        <div class="accom-name">Harbor Point Suites</div>
+        <div class="accom-stars">★★★★☆</div>
+        <p class="accom-desc">Modern business hotel within the Subic Bay Freeport Zone. Walking distance to Harbor Point mall, dining options, and the waterfront promenade. Great for both leisure and corporate travellers.</p>
+        <div class="accom-location"><svg class="txt-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Harbor Point, Subic Bay Freeport Zone</div>
+      </div>
+      <div class="accom-actions">
+        <a href="#" class="accom-btn accom-btn-primary"><svg class="txt-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg>Visit Website</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Harbor+Point+Suites%2C+Harbor+Point%2C+Subic+Bay+Freeport+Zone" target="_blank" rel="noopener noreferrer" class="accom-btn accom-btn-outline"><svg class="txt-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
+      </div>
+      <div class="accom-reviews">
+        <div class="accom-reviews-title">Guest Reviews</div>
+        <div id="reviews-3">
+          <div class="review-item">
+            <div class="review-avatar" style="background:#b45a00">RP</div>
+            <div class="review-content">
+              <div class="review-meta"><span class="review-name">Ron P.</span><span class="review-stars">★★★★☆</span></div>
+              <div class="review-text">Very convenient location. Clean, modern rooms. Good breakfast buffet.</div>
+            </div>
+          </div>
+        </div>
+        <button class="review-form-toggle" onclick="toggleReviewForm('rform-3')">+ Leave a Review</button>
+        <div class="review-form" id="rform-3" style="display:none">
+          <label>Your Name</label>
+          <input type="text" placeholder="Your name" id="rname-3" />
+          <label>Rating</label>
+          <div class="star-input" id="stars-3">
+            <span onclick="setStars('stars-3',1)">★</span>
+            <span onclick="setStars('stars-3',2)">★</span>
+            <span onclick="setStars('stars-3',3)">★</span>
+            <span onclick="setStars('stars-3',4)">★</span>
+            <span onclick="setStars('stars-3',5)">★</span>
+          </div>
+          <label>Your Review</label>
+          <textarea rows="3" placeholder="Share your experience…" id="rtext-3"></textarea>
+          <button class="review-submit-btn" onclick="submitReview('reviews-3','rname-3','stars-3','rtext-3','rform-3')">Submit Review</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="accom-card" data-type="inn">
+      <div class="accom-card-img">
+        <img src="https://images.unsplash.com/photo-1601918774946-25832a4be0d6?w=600&q=80" alt="Iba Budget Inn" loading="lazy" />
+        <span class="accom-type-badge">Inn</span>
+      </div>
+      <div class="accom-body">
+        <div class="accom-name">Balay ni Lola Guesthouse</div>
+        <div class="accom-stars">★★★☆☆</div>
+        <p class="accom-desc">A charming budget-friendly guesthouse near Iba town proper. Run by a local family with home-cooked breakfast, WiFi, and a small garden. Perfect for solo travellers and backpackers exploring the province.</p>
+        <div class="accom-location"><svg class="txt-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Iba, Zambales (Town Proper)</div>
+      </div>
+      <div class="accom-actions">
+        <a href="#" class="accom-btn accom-btn-primary"><svg class="txt-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg>Visit Website</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Balay+ni+Lola+Guesthouse%2C+Iba%2C+Zambales" target="_blank" rel="noopener noreferrer" class="accom-btn accom-btn-outline"><svg class="txt-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
+      </div>
+      <div class="accom-reviews">
+        <div class="accom-reviews-title">Guest Reviews</div>
+        <div id="reviews-4">
+          <div class="review-item">
+            <div class="review-avatar" style="background:#0b3589">ST</div>
+            <div class="review-content">
+              <div class="review-meta"><span class="review-name">Sophie T.</span><span class="review-stars">★★★★★</span></div>
+              <div class="review-text">Best budget find in Zambales! Lola's cooking is incredible. So homey and welcoming.</div>
+            </div>
+          </div>
+        </div>
+        <button class="review-form-toggle" onclick="toggleReviewForm('rform-4')">+ Leave a Review</button>
+        <div class="review-form" id="rform-4" style="display:none">
+          <label>Your Name</label>
+          <input type="text" placeholder="Your name" id="rname-4" />
+          <label>Rating</label>
+          <div class="star-input" id="stars-4">
+            <span onclick="setStars('stars-4',1)">★</span>
+            <span onclick="setStars('stars-4',2)">★</span>
+            <span onclick="setStars('stars-4',3)">★</span>
+            <span onclick="setStars('stars-4',4)">★</span>
+            <span onclick="setStars('stars-4',5)">★</span>
+          </div>
+          <label>Your Review</label>
+          <textarea rows="3" placeholder="Share your experience…" id="rtext-4"></textarea>
+          <button class="review-submit-btn" onclick="submitReview('reviews-4','rname-4','stars-4','rtext-4','rform-4')">Submit Review</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="accom-card" data-type="resort">
+      <div class="accom-card-img">
+        <img src="https://images.unsplash.com/photo-1540541338537-4680c781f5c9?w=600&q=80" alt="Liwliwa Surf Camp" loading="lazy" />
+        <span class="accom-type-badge">Resort</span>
+      </div>
+      <div class="accom-body">
+        <div class="accom-name">Liwliwa Surf Camp &amp; Resort</div>
+        <div class="accom-stars">★★★★☆</div>
+        <p class="accom-desc">The go-to stay for surfers in San Felipe. Native-style cottages steps from the waves, surf board rentals and lessons, an outdoor bar, and a community of like-minded ocean lovers. Bookings fill quickly during surf season.</p>
+        <div class="accom-location"><svg class="txt-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Liwliwa, San Felipe, Zambales</div>
+      </div>
+      <div class="accom-actions">
+        <a href="#" class="accom-btn accom-btn-primary"><svg class="txt-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg>Visit Website</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Liwliwa+Surf+Camp+%26+Resort%2C+Liwliwa%2C+San+Felipe%2C+Zambales" target="_blank" rel="noopener noreferrer" class="accom-btn accom-btn-outline"><svg class="txt-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
+      </div>
+      <div class="accom-reviews">
+        <div class="accom-reviews-title">Guest Reviews</div>
+        <div id="reviews-5">
+          <div class="review-item">
+            <div class="review-avatar" style="background:#e85d04">BN</div>
+            <div class="review-content">
+              <div class="review-meta"><span class="review-name">Ben N.</span><span class="review-stars">★★★★★</span></div>
+              <div class="review-text">Surfed here for 3 days. Instructors are patient and the waves were perfect. Will be back!</div>
+            </div>
+          </div>
+        </div>
+        <button class="review-form-toggle" onclick="toggleReviewForm('rform-5')">+ Leave a Review</button>
+        <div class="review-form" id="rform-5" style="display:none">
+          <label>Your Name</label>
+          <input type="text" placeholder="Your name" id="rname-5" />
+          <label>Rating</label>
+          <div class="star-input" id="stars-5">
+            <span onclick="setStars('stars-5',1)">★</span>
+            <span onclick="setStars('stars-5',2)">★</span>
+            <span onclick="setStars('stars-5',3)">★</span>
+            <span onclick="setStars('stars-5',4)">★</span>
+            <span onclick="setStars('stars-5',5)">★</span>
+          </div>
+          <label>Your Review</label>
+          <textarea rows="3" placeholder="Share your experience…" id="rtext-5"></textarea>
+          <button class="review-submit-btn" onclick="submitReview('reviews-5','rname-5','stars-5','rtext-5','rform-5')">Submit Review</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="accom-card" data-type="hotel">
+      <div class="accom-card-img">
+        <img src="https://images.unsplash.com/photo-1455587734955-081b22074882?w=600&q=80" alt="Zambales Travellers Inn" loading="lazy" />
+        <span class="accom-type-badge">Hotel</span>
+      </div>
+      <div class="accom-body">
+        <div class="accom-name">Olongapo Travellers Inn</div>
+        <div class="accom-stars">★★★☆☆</div>
+        <p class="accom-desc">A practical mid-range hotel in central Olongapo. Clean rooms with private bathroom, free WiFi, and air-conditioning. Walking distance to restaurants, bus terminals, and the Olongapo market. Good base for exploring both Subic and the coves.</p>
+        <div class="accom-location"><svg class="txt-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Magsaysay Dr, Olongapo City</div>
+      </div>
+      <div class="accom-actions">
+        <a href="#" class="accom-btn accom-btn-primary"><svg class="txt-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg>Visit Website</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Olongapo+Travellers+Inn%2C+Magsaysay+Dr%2C+Olongapo+City" target="_blank" rel="noopener noreferrer" class="accom-btn accom-btn-outline"><svg class="txt-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
+      </div>
+      <div class="accom-reviews">
+        <div class="accom-reviews-title">Guest Reviews</div>
+        <div id="reviews-6">
+          <div class="review-item">
+            <div class="review-avatar" style="background:#b71022">EM</div>
+            <div class="review-content">
+              <div class="review-meta"><span class="review-name">Edgar M.</span><span class="review-stars">★★★☆☆</span></div>
+              <div class="review-text">Decent for the price. Room was clean and staff was helpful. Noise from the street can be an issue.</div>
+            </div>
+          </div>
+        </div>
+        <button class="review-form-toggle" onclick="toggleReviewForm('rform-6')">+ Leave a Review</button>
+        <div class="review-form" id="rform-6" style="display:none">
+          <label>Your Name</label>
+          <input type="text" placeholder="Your name" id="rname-6" />
+          <label>Rating</label>
+          <div class="star-input" id="stars-6">
+            <span onclick="setStars('stars-6',1)">★</span>
+            <span onclick="setStars('stars-6',2)">★</span>
+            <span onclick="setStars('stars-6',3)">★</span>
+            <span onclick="setStars('stars-6',4)">★</span>
+            <span onclick="setStars('stars-6',5)">★</span>
+          </div>
+          <label>Your Review</label>
+          <textarea rows="3" placeholder="Share your experience…" id="rtext-6"></textarea>
+          <button class="review-submit-btn" onclick="submitReview('reviews-6','rname-6','stars-6','rtext-6','rform-6')">Submit Review</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js" defer></script>
+<script src="../assets/js/main.js" defer></script>
+<script>
+/* ── FILTER ──────────────────────────────────────────────── */
+document.querySelectorAll('.accom-filter .filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.accom-filter .filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const type = btn.dataset.type;
+    document.querySelectorAll('.accom-card').forEach(card => {
+      card.style.display = (type === 'all' || card.dataset.type === type) ? '' : 'none';
+    });
+  });
+});
+
+/* ── REVIEW FORM TOGGLE ──────────────────────────────────── */
+function toggleReviewForm(id) {
+  const el = document.getElementById(id);
+  el.style.display = el.style.display === 'none' ? '' : 'none';
+}
+
+/* ── REVIEW SEE MORE / SEE LESS ──────────────────────────── */
+const VISIBLE_REVIEWS = 2;
+
+function refreshReviewToggle(listId) {
+  const list = document.getElementById(listId);
+  if (!list) return;
+  const items = Array.from(list.querySelectorAll('.review-item'));
+  let toggle = document.getElementById('toggle-' + listId);
+
+  if (items.length <= VISIBLE_REVIEWS) {
+    items.forEach(item => item.style.display = '');
+    if (toggle) toggle.remove();
+    return;
+  }
+
+  if (!toggle) {
+    toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'review-see-more';
+    toggle.id = 'toggle-' + listId;
+    toggle.dataset.expanded = 'false';
+    toggle.addEventListener('click', () => {
+      toggle.dataset.expanded = toggle.dataset.expanded === 'true' ? 'false' : 'true';
+      refreshReviewToggle(listId);
+    });
+    list.insertAdjacentElement('afterend', toggle);
+  }
+
+  const expanded = toggle.dataset.expanded === 'true';
+  items.forEach((item, i) => item.style.display = (expanded || i < VISIBLE_REVIEWS) ? '' : 'none');
+  toggle.textContent = expanded ? 'See Less' : `See More (${items.length - VISIBLE_REVIEWS})`;
+}
+
+document.querySelectorAll('.accom-reviews > div[id^="reviews-"]').forEach(list => refreshReviewToggle(list.id));
+
+/* ── STAR RATING ─────────────────────────────────────────── */
+function setStars(containerId, rating) {
+  const stars = document.querySelectorAll('#' + containerId + ' span');
+  stars.forEach((s, i) => s.classList.toggle('active', i < rating));
+  document.getElementById(containerId).dataset.rating = rating;
+}
+
+/* ── SUBMIT REVIEW ───────────────────────────────────────── */
+function submitReview(listId, nameId, starsId, textId, formId) {
+  const name = document.getElementById(nameId).value.trim();
+  const text = document.getElementById(textId).value.trim();
+  const rating = parseInt(document.getElementById(starsId).dataset.rating || 0);
+  if (!name || !text || !rating) {
+    alert('Please fill in your name, rating, and review.');
+    return;
+  }
+  const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+  const initials = name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+  const colors = ['#0b3589','#b71022','#b45a00','#10b981','#e85d04','#6b7280'];
+  const color = colors[Math.floor(Math.random() * colors.length)];
+
+  const div = document.createElement('div');
+  div.className = 'review-item';
+  div.innerHTML = `
+    <div class="review-avatar" style="background:${color}">${initials}</div>
+    <div class="review-content">
+      <div class="review-meta">
+        <span class="review-name">${name.replace(/</g,'&lt;')}</span>
+        <span class="review-stars">${stars}</span>
+      </div>
+      <div class="review-text">${text.replace(/</g,'&lt;')}</div>
+    </div>`;
+  document.getElementById(listId).appendChild(div);
+  document.getElementById(formId).style.display = 'none';
+  document.getElementById(nameId).value = '';
+  document.getElementById(textId).value = '';
+  document.querySelectorAll('#' + starsId + ' span').forEach(s => s.classList.remove('active'));
+  refreshReviewToggle(listId);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Manage your ZambaLesGo account." />
+  <title>My Account | Zambales, Philippines</title>
+  <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+<div style="height:72px"></div>
+
+<div style="background:var(--ocean);padding:2.5rem var(--pad-x)">
+  <p style="font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--sand);margin-bottom:0.4rem">Your Account</p>
+  <h1 style="font-family:var(--ff-display);font-size:clamp(1.6rem,3vw,2.4rem);color:#fff;font-weight:300">
+    Account <em style="font-style:italic">Settings</em>
+  </h1>
+</div>
+
+<div class="account-layout" id="account-root">
+
+  <aside class="account-sidebar">
+    <div class="acct-avatar-wrap">
+      <div class="acct-avatar" id="acct-avatar">?</div>
+      <div class="acct-display-name" id="acct-display-name">Loading…</div>
+      <div class="acct-display-email" id="acct-display-email"></div>
+    </div>
+
+    <nav class="acct-nav" aria-label="Account sections">
+      <button class="acct-nav-item active" data-section="profile">
+        <span class="acct-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span> Profile
+      </button>
+      <button class="acct-nav-item" data-section="security">
+        <span class="acct-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span> Security
+      </button>
+    </nav>
+
+    <div class="acct-sidebar-footer">
+      <button class="acct-danger-btn" id="btn-open-delete">Delete Account</button>
+    </div>
+  </aside>
+
+  <div class="account-main">
+
+    <div class="acct-section" id="section-profile">
+      <div class="acct-section-header">
+        <h2>Personal Information</h2>
+        <p>Update your display name and phone number.</p>
+      </div>
+      <div class="acct-section-body">
+        <form id="profile-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="acct-name">Full Name <span style="color:var(--coral)">*</span></label>
+              <input type="text" id="acct-name" placeholder="Juan dela Cruz" autocomplete="name" />
+              <span class="field-error-msg" id="err-acct-name"></span>
+            </div>
+            <div class="form-group">
+              <label for="acct-email">Email Address</label>
+              <input type="email" id="acct-email" class="acct-email-field" disabled />
+              <span class="acct-field-hint">Email cannot be changed.</span>
+            </div>
+          </div>
+          <div class="form-group" style="max-width:340px">
+            <label for="acct-phone">Phone Number</label>
+            <input type="tel" id="acct-phone" placeholder="09XX XXX XXXX" autocomplete="tel" />
+            <span class="field-error-msg" id="err-acct-phone"></span>
+          </div>
+          <div style="display:flex;align-items:center;flex-wrap:wrap;gap:0.8rem;margin-top:0.5rem">
+            <button type="submit" class="acct-save-btn">Save Changes</button>
+            <span class="acct-success-toast" id="toast-profile">✓ Changes saved!</span>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="acct-section" id="section-security" hidden>
+      <div class="acct-section-header">
+        <h2>Change Password</h2>
+        <p>Choose a strong password you haven't used before.</p>
+      </div>
+      <div class="acct-section-body">
+        <form id="password-form" novalidate style="max-width:420px">
+          <div class="form-group">
+            <label for="acct-cur-pw">Current Password <span style="color:var(--coral)">*</span></label>
+            <input type="password" id="acct-cur-pw" placeholder="Your current password" autocomplete="current-password" />
+            <span class="field-error-msg" id="err-cur-pw"></span>
+          </div>
+          <div class="form-group">
+            <label for="acct-new-pw">New Password <span style="color:var(--coral)">*</span></label>
+            <input type="password" id="acct-new-pw" placeholder="At least 8 characters" autocomplete="new-password" />
+            <span class="field-error-msg" id="err-new-pw"></span>
+          </div>
+          <div class="form-group">
+            <label for="acct-conf-pw">Confirm New Password <span style="color:var(--coral)">*</span></label>
+            <input type="password" id="acct-conf-pw" placeholder="Repeat new password" autocomplete="new-password" />
+            <span class="field-error-msg" id="err-conf-pw"></span>
+          </div>
+          <div style="display:flex;align-items:center;flex-wrap:wrap;gap:0.8rem;margin-top:0.5rem">
+            <button type="submit" class="acct-save-btn">Update Password</button>
+            <span class="acct-success-toast" id="toast-password">✓ Password updated!</span>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="acct-delete-zone" id="section-delete" hidden>
+      <h2>Delete Account</h2>
+      <p>
+        Permanently delete your ZambaLesGo account and all associated data.
+        This action <strong>cannot be undone</strong>.
+      </p>
+      <button class="acct-delete-btn" id="btn-confirm-delete">Yes, Delete My Account</button>
+    </div>
+
+  </div>
+</div>
+
+<div class="acct-modal-overlay" id="delete-modal" aria-modal="true" role="dialog" aria-hidden="true">
+  <div class="acct-modal-box">
+    <div class="acct-modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></div>
+    <h3>Delete your account?</h3>
+    <p>This will permanently remove your account and all your data. You cannot undo this action.</p>
+    <div class="acct-modal-actions">
+      <button class="acct-modal-cancel" id="btn-cancel-delete">Cancel</button>
+      <button class="acct-modal-confirm" id="btn-do-delete">Delete Account</button>
+    </div>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js" defer></script>
+<script src="../assets/js/main.js" defer></script>
+<script>
+(function () {
+  const PHONE_RE = /^(\+?63|0)[\s-]?9\d{2}[\s-]?\d{3}[\s-]?\d{4}$/;
+
+  /* ── load user from storage ─────────────────────────────── */
+  function getUser() {
+    try { return JSON.parse(localStorage.getItem('zam_user') || 'null'); } catch { return null; }
+  }
+  function saveUser(u) { localStorage.setItem('zam_user', JSON.stringify(u)); }
+
+  const user = getUser();
+  if (!user) {
+    /* not logged in — redirect away */
+    window.location.href = '../index.html';
+  }
+
+  /* ── populate UI ────────────────────────────────────────── */
+  function initUI() {
+    const initial = user.name ? user.name[0].toUpperCase() : 'U';
+    document.getElementById('acct-avatar').textContent        = initial;
+    document.getElementById('acct-display-name').textContent  = user.name || 'User';
+    document.getElementById('acct-display-email').textContent = user.email || '';
+    document.getElementById('acct-name').value  = user.name  || '';
+    document.getElementById('acct-email').value = user.email || '';
+    document.getElementById('acct-phone').value = user.phone || '';
+  }
+  initUI();
+
+  /* ── sidebar tab switching ──────────────────────────────── */
+  const sections = {
+    profile:  document.getElementById('section-profile'),
+    security: document.getElementById('section-security'),
+  };
+  document.querySelectorAll('.acct-nav-item[data-section]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.acct-nav-item').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      Object.values(sections).forEach(s => s && (s.hidden = true));
+      const target = sections[btn.dataset.section];
+      if (target) target.hidden = false;
+    });
+  });
+
+  /* ── field validation helpers ───────────────────────────── */
+  function setErr(inputId, msgId, msg) {
+    const input = document.getElementById(inputId);
+    const span  = document.getElementById(msgId);
+    if (!input || !span) return;
+    span.textContent = msg;
+    msg ? input.classList.add('input-error') : input.classList.remove('input-error');
+  }
+  function clearOnInput(inputId, msgId) {
+    document.getElementById(inputId)?.addEventListener('input', () => setErr(inputId, msgId, ''));
+  }
+  clearOnInput('acct-name', 'err-acct-name');
+  clearOnInput('acct-phone', 'err-acct-phone');
+  clearOnInput('acct-cur-pw', 'err-cur-pw');
+  clearOnInput('acct-new-pw', 'err-new-pw');
+  clearOnInput('acct-conf-pw', 'err-conf-pw');
+
+  function showToast(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.add('show');
+    setTimeout(() => el.classList.remove('show'), 3000);
+  }
+
+  /* ── profile form ───────────────────────────────────────── */
+  document.getElementById('profile-form')?.addEventListener('submit', function (e) {
+    e.preventDefault();
+    setErr('acct-name', 'err-acct-name', '');
+    setErr('acct-phone', 'err-acct-phone', '');
+
+    const name  = document.getElementById('acct-name').value.trim();
+    const phone = document.getElementById('acct-phone').value.trim();
+    let valid = true;
+
+    if (!name) { setErr('acct-name', 'err-acct-name', 'Name is required.'); valid = false; }
+    if (phone && !PHONE_RE.test(phone)) {
+      setErr('acct-phone', 'err-acct-phone', 'Enter a valid PH number (e.g. 09XX XXX XXXX).');
+      valid = false;
+    }
+    if (!valid) return;
+
+    const updated = { ...user, name, phone };
+    saveUser(updated);
+
+    /* refresh sidebar */
+    document.getElementById('acct-avatar').textContent        = name[0].toUpperCase();
+    document.getElementById('acct-display-name').textContent  = name;
+    showToast('toast-profile');
+  });
+
+  document.getElementById('password-form')?.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    ['acct-cur-pw','acct-new-pw','acct-conf-pw'].forEach(id => {
+      const input = document.getElementById(id);
+      if (input) input.classList.remove('input-error');
+    });
+    ['err-cur-pw','err-new-pw','err-conf-pw'].forEach(id => {
+      const span = document.getElementById(id);
+      if (span) span.textContent = '';
+    });
+
+    const oldPw = document.getElementById('acct-cur-pw').value;
+    const newPw = document.getElementById('acct-new-pw').value;
+    const conf  = document.getElementById('acct-conf-pw').value;
+
+    let valid = true;
+
+    if (!oldPw) { setErr('acct-cur-pw', 'err-cur-pw', 'Current password is required.'); valid = false; }
+    if (!newPw) { setErr('acct-new-pw', 'err-new-pw', 'New password is required.'); valid = false; }
+    else if (newPw.length < 8) { setErr('acct-new-pw', 'err-new-pw', 'Must be at least 8 characters.'); valid = false; }
+    if (!conf) { setErr('acct-conf-pw', 'err-conf-pw', 'Please confirm your new password.'); valid = false; }
+    else if (newPw && conf !== newPw) { setErr('acct-conf-pw', 'err-conf-pw', 'Passwords do not match.'); valid = false; }
+    
+    if (!valid) return;
+
+    const currentUser = JSON.parse(localStorage.getItem('zam_user') || '{}');
+    if (!currentUser.email) {
+      alert('Error: No logged-in session found. Please sign in again.');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('email', currentUser.email);
+    formData.append('old_password', oldPw);
+    formData.append('new_password', newPw);
+
+    try {
+      const res = await fetch('../api/update_password.php', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        this.reset();
+        showToast('toast-password');
+      } else {
+        if (data.field === 'old_password') {
+          setErr('acct-cur-pw', 'err-cur-pw', data.error);
+        } else {
+          alert('Error: ' + data.error);
+        }
+      }
+    } catch (err) {
+      alert('Could not connect to the password management server.');
+    }
+  });
+
+  /* ── delete account modal ───────────────────────────────── */
+  const deleteModal = document.getElementById('delete-modal');
+
+  function openDeleteModal() {
+    deleteModal.classList.add('open');
+    deleteModal.setAttribute('aria-hidden', 'false');
+  }
+  function closeDeleteModal() {
+    deleteModal.classList.remove('open');
+    deleteModal.setAttribute('aria-hidden', 'true');
+  }
+
+  document.getElementById('btn-open-delete')?.addEventListener('click', openDeleteModal);
+  document.getElementById('btn-confirm-delete')?.addEventListener('click', openDeleteModal);
+  document.getElementById('btn-cancel-delete')?.addEventListener('click', closeDeleteModal);
+  deleteModal?.addEventListener('click', (e) => { if (e.target === deleteModal) closeDeleteModal(); });
+
+  document.getElementById('btn-do-delete')?.addEventListener('click', async () => {
+    const currentUser = JSON.parse(localStorage.getItem('zam_user') || '{}');
+
+    if (!currentUser.email) {
+      alert('Error: No logged-in session found.');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('email', currentUser.email);
+
+    try {
+      const res = await fetch('../api/delete_account.php', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        localStorage.removeItem('zam_user');
+        alert('Your account has been permanently closed. We hope to see you again!');
+        window.location.href = '../index.html';
+      } else {
+        alert('Error: ' + data.error);
+      }
+    } catch (err) {
+      alert('Could not connect to the account management server.');
+    }
+  });
+
+
+})();
+</script>
+</body>
+</html>
