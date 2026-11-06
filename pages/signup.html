@@ -166,12 +166,11 @@
     btn.disabled = true;
 
     try {
-      // Magpapadala tayo ng real request sa ating bagong PHP file gamit ang FormData
       const res = await fetch('../api/signup.php', {
         method: 'POST',
         body: new FormData(this)
       });
-      
+
       const data = await res.json();
 
       if (data.success) {

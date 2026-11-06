@@ -546,26 +546,6 @@ section { padding: 7rem 4rem; }
 .tip-title { font-size: 1rem; font-weight: 600; color: var(--coral); margin-bottom: 0.7rem; }
 .tip-text { font-size: 0.88rem; color: #fff; line-height: 1.75; }
 
-/* ── CTA BANNER ───────────────────────────────────────────── */
-.cta-section {
-  padding: 8rem 4rem;
-  background: var(--coral);
-  text-align: center; position: relative; overflow: hidden;
-}
-.cta-section::before {
-  content: 'ZAMBALES';
-  position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: var(--ff-display); font-size: 18vw; font-weight: 700;
-  color: rgba(255,255,255,0.07); white-space: nowrap;
-  pointer-events: none; letter-spacing: -0.05em;
-}
-.cta-section .section-title { color: var(--cream); font-size: clamp(2.4rem, 5vw, 4.5rem); margin-bottom: 1.2rem; }
-.cta-section p { color: rgba(253,248,240,0.85); font-size: 1rem; margin-bottom: 2.5rem; }
-.cta-section .btn-outline { border-color: rgba(253,248,240,0.7); }
-.cta-section .btn-primary { background: var(--cream); color: var(--coral); }
-.cta-section .btn-primary:hover { background: var(--ocean); color: var(--cream); }
-
 /* ── FOOTER ───────────────────────────────────────────────── */
 footer {
   --footer-blue:  #385091;
